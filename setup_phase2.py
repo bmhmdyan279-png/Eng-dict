@@ -1,18 +1,34 @@
 #!/usr/bin/env python3
-"""ارتقا به فاز ۲: نسخه‌بندی، Pagefind، PWA."""
-from pathlib import Path
+"""
+ارتقا به فاز ۲ + تبدیل به فرهنگ عمومی مهندسی (بدون محدودیت بتن)
+نسخه‌بندی mike، جست‌وجوی Pagefind، PWA
+"""
 
+from pathlib import Path
+import sys
+
+# ------------------------- تنظیمات -------------------------
+# این مقادیر را می‌توانید بعداً هم تغییر دهید
+SITE_NAME = "فرهنگ واژه‌های تخصصی مهندسی"
+SITE_DESC = "فرهنگ لغت آنلاین و چندزبانهٔ واژه‌های فنی و مهندسی"
+SHORT_NAME = "EngDict"
+REPO_USER = "bmhmdyan279-png"
+REPO_NAME = "Eng-dict"
+SITE_URL = f"https://{REPO_USER}.github.io/{REPO_NAME}/"
+REPO_URL = f"https://github.com/{REPO_USER}/{REPO_NAME}"
+
+# ------------------------- محتوای فایل‌ها -------------------------
 FILES = {
     "requirements.txt": """mkdocs-material==9.5.*
 pyyaml==6.0.*
 mike==2.1.*
 """,
 
-    "mkdocs.yml": """site_name: فرهنگ واژه‌های تخصصی بتن
-site_description: فرهنگ لغت آنلاین واژه‌های تخصصی بتن
-site_url: https://bmhmdyan279-png.github.io/Eng-dict/
-repo_url: https://github.com/bmhmdyan279-png/Eng-dict
-repo_name: bmhmdyan279-png/Eng-dict
+    "mkdocs.yml": f'''site_name: {SITE_NAME}
+site_description: {SITE_DESC}
+site_url: {SITE_URL}
+repo_url: {REPO_URL}
+repo_name: {REPO_USER}/{REPO_NAME}
 site_dir: site
 
 theme:
@@ -80,16 +96,16 @@ extra:
     provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/bmhmdyan279-png/Eng-dict
+      link: {REPO_URL}
 
 extra_css:
   - assets/css/extra.css
 
 extra_javascript:
-  - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js", defer: true }
-  - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js", defer: true }
-  - { path: assets/js/math.js, defer: true }
-  - { path: assets/js/pagefind.js, type: module }
+  - {{ path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js", defer: true }}
+  - {{ path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js", defer: true }}
+  - {{ path: assets/js/math.js, defer: true }}
+  - {{ path: assets/js/pagefind.js, type: module }}
 
 nav:
   - خانه: index.md
@@ -99,33 +115,34 @@ nav:
   - مشارکت: contribute.md
   - درباره: about.md
   - ارجاع: citation.md
-""",
+''',
 
-    "docs/assets/icon.svg": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    "docs/assets/icon.svg": '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 <rect width="100" height="100" rx="15" fill="#009688"/>
-<text x="50" y="68" font-size="60" font-family="Vazirmatn, Arial" font-weight="bold" text-anchor="middle" fill="white">ب</text>
-</svg>""",
+<text x="50" y="68" font-size="60" font-family="Vazirmatn, Arial" font-weight="bold" text-anchor="middle" fill="white">م</text>
+</svg>''',
 
-    "docs/manifest.webmanifest": """{
-  "name": "فرهنگ واژه‌های تخصصی بتن",
-  "short_name": "بتن دیکت",
-  "description": "فرهنگ لغت آنلاین واژه‌های تخصصی بتن",
-  "start_url": "/Eng-dict/",
+    "docs/manifest.webmanifest": f'''{{
+  "name": "{SITE_NAME}",
+  "short_name": "{SHORT_NAME}",
+  "description": "{SITE_DESC}",
+  "start_url": "/{REPO_NAME}/",
   "display": "standalone",
   "background_color": "#009688",
   "theme_color": "#009688",
   "dir": "rtl",
   "lang": "fa",
   "icons": [
-    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }}
   ]
-}""",
+}}''',
 
     "docs/assets/js/pagefind.js": """// بارگذاری Pagefind بعد از رندر صفحه
 document.addEventListener("DOMContentLoaded", () => {
   if (window.__pagefind__) return;
-  const base = document.querySelector('meta[name="base"]')?.content
-             || document.querySelector('link[rel="canonical"]')?.href.replace(/\\/+$/, '') + '/';
+  const base = document.querySelector('link[rel="canonical"]')?.href.replace(/\\/+$/, '') + '/'
+             || document.querySelector('meta[name="base"]')?.content
+             || window.location.origin + '/';
   const script = document.createElement("script");
   script.type = "module";
   script.src = base + "pagefind/pagefind.js";
@@ -137,13 +154,86 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 """,
 
+    "data/terms.yaml": """\
+# فرهنگ واژه‌های تخصصی مهندسی — داده‌های اولیه
+# می‌توانید هر رشته‌ای را اضافه کنید: عمران، مکانیک، برق، شیمی و...
+
+- id: concrete
+  fa: بتن
+  slug: beton
+  aliases: [Concrete, Béton]
+  languages:
+    en: Concrete
+    fr: Béton
+    de: Beton
+    ar: خرسانة
+  category: مهندسی عمران
+  definition: >
+    بتن مخلوطی از سیمان، سنگ‌دانه، آب و افزودنی‌هاست که پس از گیرش سخت می‌شود.
+  standards: [ASTM C94, EN 206, ISIRI 3892]
+  related: [cement, rebar]
+  status: approved
+  source: book-v1
+  last_updated: "2026-08-05"
+  contributors: [بنیان‌گذار]
+
+- id: cement
+  fa: سیمان
+  slug: siman
+  aliases: [Cement, Ciment]
+  languages:
+    en: Cement
+    fr: Ciment
+    de: Zement
+    ar: الأسمنت
+  category: مهندسی عمران
+  definition: >
+    سیمان مادهٔ چسباننده‌ای است که در مجاورت آب سخت می‌شود و اجزای بتن را به هم می‌چسباند.
+  standards: [ASTM C150, EN 197-1]
+  related: [concrete]
+  status: approved
+
+- id: rebar
+  fa: آرماتور
+  slug: armator
+  aliases: [Rebar, Armature, میلگرد]
+  languages:
+    en: Rebar
+    fr: Armature
+    de: Bewehrung
+    ar: حديد التسليح
+  category: مهندسی عمران
+  definition: >
+    میلگرد فولادی که برای افزایش مقاومت کششی بتن به کار می‌رود.
+  standards: [ASTM A615, ISIRI 3132]
+  related: [concrete]
+  status: approved
+
+# نمونه واژه از رشته‌های دیگر (می‌توانید اضافه کنید)
+- id: torque
+  fa: گشتاور
+  slug: gashtavar
+  aliases: [Torque, Moment]
+  languages:
+    en: Torque
+    fr: Couple
+    de: Drehmoment
+    ar: عزم الدوران
+  category: مهندسی مکانیک
+  definition: >
+    گشتاور یا ممان، عاملی است که باعث چرخش یک جسم حول محور می‌شود.
+  standards: [ISO 80000-4]
+  related: [force]
+  status: approved
+""",
+
     "scripts/build_pages.py": '''#!/usr/bin/env python3
-"""ساخت صفحات Markdown از YAML (به‌روزشده برای فاز ۲)."""
+"""ساخت صفحات Markdown از YAML (به‌روز شده برای فاز ۲)."""
 import yaml
 from pathlib import Path
 
-def load_terms(p="data/terms.yaml"):
-    with Path(p).open("r", encoding="utf-8") as f:
+def load_terms(path="data/terms.yaml"):
+    with Path(path).open("r", encoding="utf-8") as f:
         return yaml.safe_load(f) or []
 
 def term_md(t):
@@ -158,7 +248,7 @@ def term_md(t):
     src = t.get("source", "")
     upd = t.get("last_updated", "")
 
-    L = [f"---", f"title: {fa}", f"description: تعریف {fa} در فرهنگ بتن",
+    L = [f"---", f"title: {fa}", f"description: تعریف {fa} در فرهنگ مهندسی",
          f"keywords: [{', '.join([fa, en, cat])}]", f"---", "",
          f"# {fa}{f' / {en}' if en else ''}", ""]
 
@@ -195,7 +285,7 @@ def term_md(t):
         L.append("")
 
     L += ["---", "", '??? info "نحوهٔ ارجاع"', "",
-          f"    فرهنگ واژه‌های تخصصی بتن، مدخل «{fa}»، {upd}.", ""]
+          f"    {SITE_NAME}، مدخل «{fa}»، {upd}.", ""]
     return "\\n".join(L)
 
 def alpha_idx(terms):
@@ -226,14 +316,16 @@ def cat_idx(terms):
         L.append("")
     return "\\n".join(L)
 
+SITE_NAME = "{SITE_NAME}"  # injected
+
 def main():
     d = Path("docs/terms"); d.mkdir(parents=True, exist_ok=True)
     terms = load_terms()
-    print(f"Loaded {len(terms)} terms.")
+    print(f"Loaded {{len(terms)}} terms.")
     for t in terms:
-        p = d / f"{t.get('slug', t['id'])}.md"
+        p = d / f"{{t.get('slug', t['id'])}}.md"
         p.write_text(term_md(t), encoding="utf-8")
-        print(f"  ✅ {p}")
+        print(f"  ✅ {{p}}")
     (d/"index.md").write_text(alpha_idx(terms), encoding="utf-8")
     print("  ✅ docs/terms/index.md")
     (d/"categories.md").write_text(cat_idx(terms), encoding="utf-8")
@@ -243,93 +335,147 @@ if __name__ == "__main__":
     main()
 ''',
 
-    ".github/workflows/deploy.yml": """name: Deploy
+    "docs/index.md": f"""---
+hide: [navigation, toc]
+---
+
+# {SITE_NAME}
+
+به فرهنگ آنلاین واژه‌های تخصصی مهندسی خوش آمدید.  
+این پروژه با هدف گردآوری و ارائهٔ واژگان فنی تمام رشته‌های مهندسی ساخته شده و رایگان در دسترس همگان است.
+
+<div class="grid cards" markdown>
+
+- :material-book-alphabet: __فهرست واژه‌ها__
+    : بر اساس الفبای فارسی یا دسته‌بندی موضوعی
+    [:octicons-arrow-right-24: فهرست](terms/index.md)
+
+- :material-magnify: __جست‌وجو__
+    : از کادر جست‌وجوی بالای صفحه (فارسی و انگلیسی)
+
+- :material-pencil-plus: __مشارکت__
+    : واژهٔ جدید پیشنهاد دهید یا تعریف‌ها را بهبود بخشید
+    [:octicons-arrow-right-24: مشارکت](contribute.md)
+
+- :material-information: __دربارهٔ پروژه__
+    : اهداف، مجوز و نحوهٔ ارجاع
+    [:octicons-arrow-right-24: درباره](about.md)
+
+</div>
+""",
+
+    "docs/about.md": f"""\
+# دربارهٔ پروژه
+
+فرهنگ واژه‌های تخصصی مهندسی یک پروژهٔ آزاد و مشارکتی است که به مرور همهٔ رشته‌های مهندسی را پوشش خواهد داد.  
+در حال حاضر شامل واژگان پایه از مهندسی عمران، مکانیک و ... است.
+
+## اصول
+- **رایگان و آزاد** — کد MIT، محتوا CC BY-SA 4.0
+- **پایدار** — نسخه‌بندی برای ارجاع در کتاب‌ها و مقالات
+- **مشارکتی** — هر متخصصی می‌تواند دانش خود را اضافه کند
+- **داده‌محور** — ساختار YAML برای استفاده در اپلیکیشن‌های آینده
+
+## تماس
+از طریق [Issues]({REPO_URL}/issues) در GitHub با ما در میان بگذارید.
+""",
+
+    "docs/contribute.md": f"""\
+# مشارکت در توسعهٔ فرهنگ مهندسی
+
+شما هم می‌توانید واژه‌های رشتهٔ خود را به این مجموعه اضافه کنید.
+
+## روش‌ها
+1. **ساده‌ترین:** فرم Issue از پیش آماده  
+   [:octicons-arrow-right-24: پیشنهاد واژهٔ جدید]({REPO_URL}/issues/new?template=new-term.yml)
+2. **مستقیم:** Pull Request روی فایل `data/terms.yaml`
+
+## راهنمای افزودن واژه
+- تعریف کوتاه، دقیق و فنی باشد.
+- معادل‌ها به زبان‌های دیگر (حداقل انگلیسی) ذکر شود.
+- در صورت امکان استاندارد یا منبع معتبر قید گردد.
+- دسته‌بندی مرتبط (مثلاً «مهندسی برق») انتخاب شود.
+""",
+
+    "docs/citation.md": f"""\
+# نحوهٔ ارجاع
+
+## کل فرهنگ
+> {SITE_NAME}، نسخهٔ v1، ۲۰۲۶، <{SITE_URL}>.
+
+## یک مدخل خاص
+> {SITE_NAME}، مدخل «**نام واژه**»، بازیابی‌شده در [تاریخ].
+
+## BibTeX
+```bibtex
+@online{{engdict,
+  title = {{{SITE_NAME}}},
+  year  = {{2026}},
+  url   = {{{SITE_URL}}}
+}}""",
+
+".github/workflows/deploy.yml": f"""
+name: Deploy
 on:
-  push:
-    branches: [main, master]
-  workflow_dispatch:
+push:
+branches: [main, master]
+workflow_dispatch:
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+contents: write
+pages: write
+id-token: write
 concurrency:
-  group: pages
-  cancel-in-progress: false
+group: pages
+cancel-in-progress: false
 jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+build-deploy:
+runs-on: ubuntu-latest
+environment:
+name: github-pages
+url: ${{{{ steps.deploy.outputs.page_url }}}}
+steps:
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+uses: actions/checkout@v4
+with:
+fetch-depth: 0
+token: ${{{{ secrets.GITHUB_TOKEN }}}}
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+uses: actions/setup-python@v5
+with:
+python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+uses: actions/setup-node@v4
+with:
+node-version: '20'
 
-      - name: Generate Markdown pages
-        run: python scripts/build_pages.py
+name: Install dependencies
+run: pip install -r requirements.txt
 
-      - name: Configure Git
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
+name: Generate Markdown pages
+run: python scripts/build_pages.py
 
-      - name: Build and deploy with mike (v1)
-        run: mike deploy --push --update-aliases v1 latest --deploy-prefix .
+name: Configure Git
+run: |
+git config user.name github-actions[bot]
+git config user.email github-actions[bot]@users.noreply.github.com
 
-      - name: Copy Pagefind assets into versioned dirs
-        run: |
-          cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
+name: Build and deploy with mike (v1)
+run: mike deploy --push --update-aliases v1 latest --deploy-prefix .
 
-      - name: Build Pagefind index
-        run: |
-          npx pagefind --site site --output-subdir pagefind
-          # برای نسخه‌بندی mike، باید در ریشه باشد
-          if [ -d "site/pagefind" ]; then
-            echo "✅ Pagefind index built"
-          fi
+name: Copy PWA manifest
+run: cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./site
+name: Build Pagefind index
+run: |
+npx pagefind --site site --output-subdir pagefind
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-        id: deploy
+name: Upload Pages artifact
+uses: actions/upload-pages-artifact@v3
+with:
+path: ./site
+
+name: Deploy to GitHub Pages
+uses: actions/deploy-pages@v4
+id: deploy
 """,
 }
-
-# فایل‌هایی که باید اضافه شوند (نه بازنویسی)
-ADD_ONLY = [
-    "data/terms.yaml",
-    "scripts/build_pages.py",  # will overwrite, but listed for clarity
-]
-
-if __name__ == "__main__":
-    print("=" * 60)
-    print("🚀 ارتقا به فاز ۲: نسخه‌بندی + Pagefind + PWA")
-    print("=" * 60)
-    for path, content in FILES.items():
-        p = Path(path)
-        p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(content, encoding="utf-8")
-        print(f"✅ {path}")
-
-    # manifest باید در docs باشد تا توسط mkdocs کپی شود
-    print("\n📝 نکات مهم:")
-    print("1. پوشهٔ .cache را به .gitignore اضافه کنید.")
-    print("2. با اولین push، mike نسخهٔ v1 را خودکار می‌سازد.")
-    print("=" * 60)
