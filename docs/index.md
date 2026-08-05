@@ -1,5 +1,5 @@
 ---
-hide: [navigation, toc]
+hide: [toc]
 ---
 
 # فرهنگ واژه‌های تخصصی مهندسی
