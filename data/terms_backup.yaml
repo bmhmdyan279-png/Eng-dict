@@ -1,0 +1,70 @@
+# فرهنگ واژه‌های تخصصی مهندسی — داده‌های اولیه
+# می‌توانید هر رشته‌ای را اضافه کنید: عمران، مکانیک، برق، شیمی و...
+
+- id: concrete
+  fa: بتن
+  slug: beton
+  aliases: [Concrete, Béton]
+  languages:
+    en: Concrete
+    fr: Béton
+    de: Beton
+    ar: خرسانة
+  category: مهندسی عمران
+  definition: >
+    بتن مخلوطی از سیمان، سنگ‌دانه، آب و افزودنی‌هاست که پس از گیرش سخت می‌شود.
+  standards: [ASTM C94, EN 206, ISIRI 3892]
+  related: [cement, rebar]
+  status: approved
+  source: book-v1
+  last_updated: "2026-08-05"
+  contributors: [بنیان‌گذار]
+
+- id: cement
+  fa: سیمان
+  slug: siman
+  aliases: [Cement, Ciment]
+  languages:
+    en: Cement
+    fr: Ciment
+    de: Zement
+    ar: الأسمنت
+  category: مهندسی عمران
+  definition: >
+    سیمان مادهٔ چسباننده‌ای است که در مجاورت آب سخت می‌شود و اجزای بتن را به هم می‌چسباند.
+  standards: [ASTM C150, EN 197-1]
+  related: [concrete]
+  status: approved
+
+- id: rebar
+  fa: آرماتور
+  slug: armator
+  aliases: [Rebar, Armature, میلگرد]
+  languages:
+    en: Rebar
+    fr: Armature
+    de: Bewehrung
+    ar: حديد التسليح
+  category: مهندسی عمران
+  definition: >
+    میلگرد فولادی که برای افزایش مقاومت کششی بتن به کار می‌رود.
+  standards: [ASTM A615, ISIRI 3132]
+  related: [concrete]
+  status: approved
+
+# نمونه واژه از رشته‌های دیگر
+- id: torque
+  fa: گشتاور
+  slug: gashtavar
+  aliases: [Torque, Moment]
+  languages:
+    en: Torque
+    fr: Couple
+    de: Drehmoment
+    ar: عزم الدوران
+  category: مهندسی مکانیک
+  definition: >
+    گشتاور یا ممان، عاملی است که باعث چرخش یک جسم حول محور می‌شود.
+  standards: [ISO 80000-4]
+  related: [force]
+  status: approved
