@@ -82,10 +82,14 @@ extra_javascript:
   - { path: assets/js/pagefind.js, type: module }
 
 nav:
-  - خانه: index.md
-  - واژه‌ها:
-    - الفبایی: terms/index.md
-    - دسته‌بندی: terms/categories.md
-  - مشارکت: contribute.md
-  - درباره: about.md
-  - ارجاع: citation.md
+  - 🏠 خانه: index
+  - 📖 واژه‌نامه:
+      - جستجوی الفبایی: terms/
+      - آرماتور: terms/armator
+      - بتن: terms/beton
+      - سیمان: terms/siman
+  - 📱 بارکد کتاب: qr
+  - ✍️ مشارکت: contribute
+  - 📄 درباره: about
+  - 📝 استناد: citation
+  - 📨 فرم غیرفنی: contribute-form
