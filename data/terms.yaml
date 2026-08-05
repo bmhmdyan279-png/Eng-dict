@@ -1,0 +1,56 @@
+# فرهنگ واژه‌های تخصصی بتن — فایل داده‌ها
+# این فایل به صورت YAML نگهداری می‌شود. برای افزودن واژه،
+# یک شیء جدید با همان ساختار اضافه کنید.
+
+- id: concrete
+  fa: بتن
+  slug: beton
+  aliases: [Concrete, Béton]
+  languages:
+    en: Concrete
+    fr: Béton
+    de: Beton
+    ar: خرسانة
+  category: مصالح
+  definition: >
+    بتن مخلوطی از سیمان، سنگ‌دانه، آب و در صورت نیاز افزودنی است
+    که پس از گیرش سخت می‌شود.
+  standards: [ASTM C94, EN 206, ISIRI 3892]
+  related: [cement, rebar, admixture]
+  status: approved
+  source: book-v1
+  last_updated: "2026-08-05"
+  contributors: [بنیان‌گذار]
+
+- id: cement
+  fa: سیمان
+  slug: siman
+  aliases: [Cement, Ciment]
+  languages:
+    en: Cement
+    fr: Ciment
+    de: Zement
+    ar: الأسمنت
+  category: مصالح
+  definition: >
+    سیمان مادهٔ چسباننده‌ای است که با آب واکنش می‌دهد و سخت می‌شود.
+  standards: [ASTM C150, EN 197-1]
+  related: [concrete, clinker]
+  status: approved
+
+- id: rebar
+  fa: آرماتور
+  slug: armator
+  aliases: [Rebar, Armature, میلگرد]
+  languages:
+    en: Rebar
+    fr: Armature
+    de: Bewehrung
+    ar: حديد التسليح
+  category: تقویت
+  definition: >
+    آرماتور یا میلگرد فولادی است که در بتن قرار می‌گیرد تا مقاومت
+    کششی آن را افزایش دهد.
+  standards: [ASTM A615, ISIRI 3132]
+  related: [concrete]
+  status: approved

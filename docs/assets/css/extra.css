@@ -1,0 +1,15 @@
+:root { --md-text-font: "Vazirmatn"; }
+body, .md-content, .md-sidebar, .md-header__title, .md-footer__inner { direction: rtl; }
+.md-typeset table:not([class]),
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td { direction: rtl; text-align: right; }
+.md-typeset { line-height: 1.8; font-size: 0.95rem; }
+.md-typeset blockquote {
+  border-right: 0.2rem solid var(--md-accent-fg-color);
+  border-left: none;
+  padding-right: 0.6rem;
+  padding-left: 0;
+}
+.md-typeset .grid.cards > :is(ul, ol) {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}

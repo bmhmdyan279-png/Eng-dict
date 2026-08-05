@@ -1,0 +1,62 @@
+site_name: فرهنگ واژه‌های تخصصی بتن
+site_description: فرهنگ لغت آنلاین واژه‌های تخصصی بتن
+site_url: https://bmhmdyan279-png.github.io/Eng-dict/
+repo_url: https://github.com/bmhmdyan279-png/Eng-dict
+repo_name: bmhmdyan279-png/Eng-dict
+
+theme:
+  name: material
+  language: fa
+  direction: rtl
+  font:
+    text: Vazirmatn
+    code: Fira Code
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.top
+    - navigation.footer
+    - content.tabs.link
+    - content.code.copy
+    - navigation.indexes
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: حالت تاریک
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: حالت روشن
+
+plugins:
+  - search:
+      lang: [fa, en]
+
+markdown_extensions:
+  - tables
+  - attr_list
+  - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - assets/css/extra.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
+  - assets/js/math.js
