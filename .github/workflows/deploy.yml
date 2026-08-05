@@ -41,20 +41,15 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
 
-      - name: Build and deploy with mike (v1)
-        run: mike deploy --push --update-aliases v1 latest --deploy-prefix .
+      - name: Build site with mike (v1, no push)
+        run: mike deploy --update-aliases v1 latest --deploy-prefix .
 
-      - name: Copy Pagefind assets into versioned dirs
-        run: |
-          cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
+      - name: Copy PWA manifest
+        run: cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
 
       - name: Build Pagefind index
         run: |
           npx pagefind --site site --output-subdir pagefind
-          # برای نسخه‌بندی mike، باید در ریشه باشد
-          if [ -d "site/pagefind" ]; then
-            echo "✅ Pagefind index built"
-          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

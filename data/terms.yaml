@@ -1,6 +1,5 @@
-# فرهنگ واژه‌های تخصصی بتن — فایل داده‌ها
-# این فایل به صورت YAML نگهداری می‌شود. برای افزودن واژه،
-# یک شیء جدید با همان ساختار اضافه کنید.
+# فرهنگ واژه‌های تخصصی مهندسی — داده‌های اولیه
+# می‌توانید هر رشته‌ای را اضافه کنید: عمران، مکانیک، برق، شیمی و...
 
 - id: concrete
   fa: بتن
@@ -11,12 +10,11 @@
     fr: Béton
     de: Beton
     ar: خرسانة
-  category: مصالح
+  category: مهندسی عمران
   definition: >
-    بتن مخلوطی از سیمان، سنگ‌دانه، آب و در صورت نیاز افزودنی است
-    که پس از گیرش سخت می‌شود.
+    بتن مخلوطی از سیمان، سنگ‌دانه، آب و افزودنی‌هاست که پس از گیرش سخت می‌شود.
   standards: [ASTM C94, EN 206, ISIRI 3892]
-  related: [cement, rebar, admixture]
+  related: [cement, rebar]
   status: approved
   source: book-v1
   last_updated: "2026-08-05"
@@ -31,11 +29,11 @@
     fr: Ciment
     de: Zement
     ar: الأسمنت
-  category: مصالح
+  category: مهندسی عمران
   definition: >
-    سیمان مادهٔ چسباننده‌ای است که با آب واکنش می‌دهد و سخت می‌شود.
+    سیمان مادهٔ چسباننده‌ای است که در مجاورت آب سخت می‌شود و اجزای بتن را به هم می‌چسباند.
   standards: [ASTM C150, EN 197-1]
-  related: [concrete, clinker]
+  related: [concrete]
   status: approved
 
 - id: rebar
@@ -47,10 +45,26 @@
     fr: Armature
     de: Bewehrung
     ar: حديد التسليح
-  category: تقویت
+  category: مهندسی عمران
   definition: >
-    آرماتور یا میلگرد فولادی است که در بتن قرار می‌گیرد تا مقاومت
-    کششی آن را افزایش دهد.
+    میلگرد فولادی که برای افزایش مقاومت کششی بتن به کار می‌رود.
   standards: [ASTM A615, ISIRI 3132]
   related: [concrete]
+  status: approved
+
+# نمونه واژه از رشته‌های دیگر
+- id: torque
+  fa: گشتاور
+  slug: gashtavar
+  aliases: [Torque, Moment]
+  languages:
+    en: Torque
+    fr: Couple
+    de: Drehmoment
+    ar: عزم الدوران
+  category: مهندسی مکانیک
+  definition: >
+    گشتاور یا ممان، عاملی است که باعث چرخش یک جسم حول محور می‌شود.
+  standards: [ISO 80000-4]
+  related: [force]
   status: approved

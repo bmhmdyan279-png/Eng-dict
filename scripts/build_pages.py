@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""ساخت صفحات Markdown از YAML (به‌روزشده برای فاز ۲)."""
+"""ساخت صفحات Markdown از YAML (فاز ۲)."""
 import yaml
 from pathlib import Path
 
-def load_terms(p="data/terms.yaml"):
-    with Path(p).open("r", encoding="utf-8") as f:
+SITE_NAME = 'فرهنگ واژه\u200cهای تخصصی مهندسی'  # مقدار از پیش تنظیم‌شده
+
+def load_terms(path="data/terms.yaml"):
+    with Path(path).open("r", encoding="utf-8") as f:
         return yaml.safe_load(f) or []
 
 def term_md(t):
@@ -19,14 +21,13 @@ def term_md(t):
     src = t.get("source", "")
     upd = t.get("last_updated", "")
 
-    L = [f"---", f"title: {fa}", f"description: تعریف {fa} در فرهنگ بتن",
-         f"keywords: [{', '.join([fa, en, cat])}]", f"---", "",
+    L = ["---", f"title: {fa}", f"description: تعریف {fa} در فرهنگ مهندسی",
+         f"keywords: [{', '.join([fa, en, cat])}]", "---", "",
          f"# {fa}{f' / {en}' if en else ''}", ""]
 
     aliases = t.get("aliases", [])
     if aliases:
-        L.append(f"**هم‌نام‌ها:** {'، '.join(aliases)}
-")
+        L.append(f"**هم‌نام‌ها:** {'، '.join(aliases)}\n")
 
     if langs:
         L += ["## معادل‌ها", "", "| زبان | معادل |", "|------|-------|"]
@@ -57,7 +58,7 @@ def term_md(t):
         L.append("")
 
     L += ["---", "", '??? info "نحوهٔ ارجاع"', "",
-          f"    فرهنگ واژه‌های تخصصی بتن، مدخل «{fa}»، {upd}.", ""]
+          f"    {SITE_NAME}، مدخل «{fa}»، {upd}.", ""]
     return "\n".join(L)
 
 def alpha_idx(terms):

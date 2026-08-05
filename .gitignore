@@ -1,11 +1,15 @@
+# Python
 __pycache__/
 *.py[cod]
-venv/
-.venv/
+*.egg-info/
+
+# MkDocs
 site/
-.idea/
-.vscode/
-*.swp
-.DS_Store
 .cache/
+
+# Node
 node_modules/
+
+# محیط مجازی
+venv/
+.env

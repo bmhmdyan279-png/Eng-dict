@@ -1,14 +1,10 @@
-#!/usr/bin/env python3
-"""
-ارتقا به فاز ۲ + تبدیل به فرهنگ عمومی مهندسی (بدون محدودیت بتن)
-نسخه‌بندی mike، جست‌وجوی Pagefind، PWA
-"""
-
 from pathlib import Path
 import sys
+import os
+import textwrap
+from typing import Dict
 
 # ------------------------- تنظیمات -------------------------
-# این مقادیر را می‌توانید بعداً هم تغییر دهید
 SITE_NAME = "فرهنگ واژه‌های تخصصی مهندسی"
 SITE_DESC = "فرهنگ لغت آنلاین و چندزبانهٔ واژه‌های فنی و مهندسی"
 SHORT_NAME = "EngDict"
@@ -17,14 +13,132 @@ REPO_NAME = "Eng-dict"
 SITE_URL = f"https://{REPO_USER}.github.io/{REPO_NAME}/"
 REPO_URL = f"https://github.com/{REPO_USER}/{REPO_NAME}"
 
-# ------------------------- محتوای فایل‌ها -------------------------
-FILES = {
-    "requirements.txt": """mkdocs-material==9.5.*
-pyyaml==6.0.*
-mike==2.1.*
-""",
+# دیکشنری تمام فایل‌ها (محتوا به‌صورت رشته)
+FILES: Dict[str, str] = {}
 
-    "mkdocs.yml": f'''site_name: {SITE_NAME}
+# ------------------------- توابع کمکی -------------------------
+def make_build_pages_script() -> str:
+    """اسکریپت ساخت صفحات Markdown از YAML را به‌صورت رشته برمی‌گرداند."""
+    code = f'''\
+#!/usr/bin/env python3
+"""ساخت صفحات Markdown از YAML (فاز ۲)."""
+import yaml
+from pathlib import Path
+
+SITE_NAME = {SITE_NAME!r}  # مقدار از پیش تنظیم‌شده
+
+def load_terms(path="data/terms.yaml"):
+    with Path(path).open("r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or []
+
+def term_md(t):
+    fa = t.get("fa", t["id"])
+    en = t.get("languages", {{}}).get("en", "")
+    slug = t.get("slug", t["id"])
+    langs = t.get("languages", {{}})
+    cat = t.get("category", "—")
+    defn = t.get("definition", "").strip()
+    stds = t.get("standards", [])
+    rel = t.get("related", [])
+    src = t.get("source", "")
+    upd = t.get("last_updated", "")
+
+    L = ["---", f"title: {{fa}}", f"description: تعریف {{fa}} در فرهنگ مهندسی",
+         f"keywords: [{{', '.join([fa, en, cat])}}]", "---", "",
+         f"# {{fa}}{{f' / {{en}}' if en else ''}}", ""]
+
+    aliases = t.get("aliases", [])
+    if aliases:
+        L.append(f"**هم‌نام‌ها:** {{'، '.join(aliases)}}\\n")
+
+    if langs:
+        L += ["## معادل‌ها", "", "| زبان | معادل |", "|------|-------|"]
+        names = {{"en":"انگلیسی","fr":"فرانسوی","de":"آلمانی","ar":"عربی","tr":"ترکی","ru":"روسی","es":"اسپانیایی"}}
+        for c, v in langs.items():
+            L.append(f"| {{names.get(c, c.upper())}} | {{v}} |")
+        L.append("")
+
+    if defn:
+        L += ["## تعریف", "", defn, ""]
+
+    L += [f"## دسته", "", f"`{{cat}}`", ""]
+
+    if stds:
+        L += ["## استانداردهای مرتبط", ""]
+        for s in stds: L.append(f"- `{{s}}`")
+        L.append("")
+
+    if rel:
+        L += ["## واژه‌های مرتبط", ""]
+        for r in rel: L.append(f"- [{{r}}](./{{r}}.md)")
+        L.append("")
+
+    if src or upd:
+        L += ["## اطلاعات تکمیلی", ""]
+        if src: L.append(f"- **منبع:** `{{src}}`")
+        if upd: L.append(f"- **به‌روزرسانی:** {{upd}}")
+        L.append("")
+
+    L += ["---", "", '??? info "نحوهٔ ارجاع"', "",
+          f"    {{SITE_NAME}}، مدخل «{{fa}}»، {{upd}}.", ""]
+    return "\\n".join(L)
+
+def alpha_idx(terms):
+    L = ["---", "title: فهرست الفبایی", "---", "",
+         "# فهرست الفبایی واژه‌ها", "",
+         "همهٔ واژه‌ها به ترتیب الفبای فارسی.", ""]
+    by_l = {{}}
+    for t in terms:
+        fa = t.get("fa", t["id"])
+        by_l.setdefault(fa[0] if fa else "?", []).append((fa, t.get("slug", t["id"])))
+    alphabet = "آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی"
+    letters = sorted(by_l.keys(), key=lambda x: alphabet.index(x) if x in alphabet else 999)
+    L.append("**پرش به حرف:** " + " · ".join(f"[{{l}}](#{{l}})" for l in letters) + "\\n")
+    for l in letters:
+        L += [f"## <a name='{{l}}'></a>{{l}}", ""]
+        for fa, s in sorted(by_l[l]): L.append(f"- [{{fa}}](./{{s}}.md)")
+        L.append("")
+    return "\\n".join(L)
+
+def cat_idx(terms):
+    L = ["---", "title: دسته‌بندی", "---", "", "# واژه‌ها بر اساس دسته", ""]
+    by_c = {{}}
+    for t in terms: by_c.setdefault(t.get("category","سایر"), []).append(t)
+    for c, ts in sorted(by_c.items()):
+        L += [f"## {{c}}", ""]
+        for t in sorted(ts, key=lambda x: x.get("fa","")):
+            L.append(f"- [{{t['fa']}}](./{{t.get('slug',t['id'])}}.md)")
+        L.append("")
+    return "\\n".join(L)
+
+def main():
+    d = Path("docs/terms"); d.mkdir(parents=True, exist_ok=True)
+    terms = load_terms()
+    print(f"Loaded {{len(terms)}} terms.")
+    for t in terms:
+        p = d / f"{{t.get('slug', t['id'])}}.md"
+        p.write_text(term_md(t), encoding="utf-8")
+        print(f"  ✅ {{p}}")
+    (d/"index.md").write_text(alpha_idx(terms), encoding="utf-8")
+    print("  ✅ docs/terms/index.md")
+    (d/"categories.md").write_text(cat_idx(terms), encoding="utf-8")
+    print("  ✅ docs/terms/categories.md")
+
+if __name__ == "__main__":
+    main()
+'''
+    # حذف تو رفتگی اضافی ناشی از چندخطی بودن (اختیاری، ولی تمیزتر)
+    return textwrap.dedent(code)
+
+# ------------------------- محتوای فایل‌ها -------------------------
+FILES["requirements.txt"] = textwrap.dedent("""\
+    mkdocs-material==9.5.*
+    pyyaml==6.0.*
+    mike==2.1.*
+""")
+
+FILES["mkdocs.yml"] = textwrap.dedent(f'''\
+site_name: {SITE_NAME}
 site_description: {SITE_DESC}
 site_url: {SITE_URL}
 repo_url: {REPO_URL}
@@ -115,14 +229,30 @@ nav:
   - مشارکت: contribute.md
   - درباره: about.md
   - ارجاع: citation.md
-''',
+''')
 
-    "docs/assets/icon.svg": '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+FILES["docs/assets/icon.svg"] = textwrap.dedent('''\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 <rect width="100" height="100" rx="15" fill="#009688"/>
 <text x="50" y="68" font-size="60" font-family="Vazirmatn, Arial" font-weight="bold" text-anchor="middle" fill="white">م</text>
-</svg>''',
+</svg>
+''')
 
-    "docs/manifest.webmanifest": f'''{{
+FILES["docs/assets/css/extra.css"] = "/* سبک‌های سفارشی فرهنگ مهندسی */\n"
+
+FILES["docs/assets/js/math.js"] = textwrap.dedent('''\
+document$.subscribe(() => {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ]
+  });
+});
+''')
+
+FILES["docs/manifest.webmanifest"] = textwrap.dedent(f'''\
+{{
   "name": "{SITE_NAME}",
   "short_name": "{SHORT_NAME}",
   "description": "{SITE_DESC}",
@@ -135,9 +265,11 @@ nav:
   "icons": [
     {{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }}
   ]
-}}''',
+}}
+''')
 
-    "docs/assets/js/pagefind.js": """// بارگذاری Pagefind بعد از رندر صفحه
+FILES["docs/assets/js/pagefind.js"] = textwrap.dedent('''\
+// بارگذاری Pagefind بعد از رندر صفحه
 document.addEventListener("DOMContentLoaded", () => {
   if (window.__pagefind__) return;
   const base = document.querySelector('link[rel="canonical"]')?.href.replace(/\\/+$/, '') + '/'
@@ -152,9 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   document.head.appendChild(script);
 });
-""",
+''')
 
-    "data/terms.yaml": """\
+FILES["data/terms.yaml"] = textwrap.dedent('''\
 # فرهنگ واژه‌های تخصصی مهندسی — داده‌های اولیه
 # می‌توانید هر رشته‌ای را اضافه کنید: عمران، مکانیک، برق، شیمی و...
 
@@ -209,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
   related: [concrete]
   status: approved
 
-# نمونه واژه از رشته‌های دیگر (می‌توانید اضافه کنید)
+# نمونه واژه از رشته‌های دیگر
 - id: torque
   fa: گشتاور
   slug: gashtavar
@@ -225,117 +357,13 @@ document.addEventListener("DOMContentLoaded", () => {
   standards: [ISO 80000-4]
   related: [force]
   status: approved
-""",
+''')
 
-    "scripts/build_pages.py": '''#!/usr/bin/env python3
-"""ساخت صفحات Markdown از YAML (به‌روز شده برای فاز ۲)."""
-import yaml
-from pathlib import Path
+# اسکریپت ساخت صفحات (با مقدار واقعی SITE_NAME)
+FILES["scripts/build_pages.py"] = make_build_pages_script()
 
-def load_terms(path="data/terms.yaml"):
-    with Path(path).open("r", encoding="utf-8") as f:
-        return yaml.safe_load(f) or []
-
-def term_md(t):
-    fa = t.get("fa", t["id"])
-    en = t.get("languages", {}).get("en", "")
-    slug = t.get("slug", t["id"])
-    langs = t.get("languages", {})
-    cat = t.get("category", "—")
-    defn = t.get("definition", "").strip()
-    stds = t.get("standards", [])
-    rel = t.get("related", [])
-    src = t.get("source", "")
-    upd = t.get("last_updated", "")
-
-    L = [f"---", f"title: {fa}", f"description: تعریف {fa} در فرهنگ مهندسی",
-         f"keywords: [{', '.join([fa, en, cat])}]", f"---", "",
-         f"# {fa}{f' / {en}' if en else ''}", ""]
-
-    aliases = t.get("aliases", [])
-    if aliases:
-        L.append(f"**هم‌نام‌ها:** {'، '.join(aliases)}\n")
-
-    if langs:
-        L += ["## معادل‌ها", "", "| زبان | معادل |", "|------|-------|"]
-        names = {"en":"انگلیسی","fr":"فرانسوی","de":"آلمانی","ar":"عربی","tr":"ترکی","ru":"روسی","es":"اسپانیایی"}
-        for c, v in langs.items():
-            L.append(f"| {names.get(c, c.upper())} | {v} |")
-        L.append("")
-
-    if defn:
-        L += ["## تعریف", "", defn, ""]
-
-    L += [f"## دسته", "", f"`{cat}`", ""]
-
-    if stds:
-        L += ["## استانداردهای مرتبط", ""]
-        for s in stds: L.append(f"- `{s}`")
-        L.append("")
-
-    if rel:
-        L += ["## واژه‌های مرتبط", ""]
-        for r in rel: L.append(f"- [{r}](./{r}.md)")
-        L.append("")
-
-    if src or upd:
-        L += ["## اطلاعات تکمیلی", ""]
-        if src: L.append(f"- **منبع:** `{src}`")
-        if upd: L.append(f"- **به‌روزرسانی:** {upd}")
-        L.append("")
-
-    L += ["---", "", '??? info "نحوهٔ ارجاع"', "",
-          f"    {SITE_NAME}، مدخل «{fa}»، {upd}.", ""]
-    return "\\n".join(L)
-
-def alpha_idx(terms):
-    L = ["---", "title: فهرست الفبایی", "---", "",
-         "# فهرست الفبایی واژه‌ها", "",
-         "همهٔ واژه‌ها به ترتیب الفبای فارسی.", ""]
-    by_l = {}
-    for t in terms:
-        fa = t.get("fa", t["id"])
-        by_l.setdefault(fa[0] if fa else "?", []).append((fa, t.get("slug", t["id"])))
-    alphabet = "آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی"
-    letters = sorted(by_l.keys(), key=lambda x: alphabet.index(x) if x in alphabet else 999)
-    L.append("**پرش به حرف:** " + " · ".join(f"[{l}](#{l})" for l in letters) + "\\n")
-    for l in letters:
-        L += [f"## <a name='{l}'></a>{l}", ""]
-        for fa, s in sorted(by_l[l]): L.append(f"- [{fa}](./{s}.md)")
-        L.append("")
-    return "\\n".join(L)
-
-def cat_idx(terms):
-    L = ["---", "title: دسته‌بندی", "---", "", "# واژه‌ها بر اساس دسته", ""]
-    by_c = {}
-    for t in terms: by_c.setdefault(t.get("category","سایر"), []).append(t)
-    for c, ts in sorted(by_c.items()):
-        L += [f"## {c}", ""]
-        for t in sorted(ts, key=lambda x: x.get("fa","")):
-            L.append(f"- [{t['fa']}](./{t.get('slug',t['id'])}.md)")
-        L.append("")
-    return "\\n".join(L)
-
-SITE_NAME = "{SITE_NAME}"  # injected
-
-def main():
-    d = Path("docs/terms"); d.mkdir(parents=True, exist_ok=True)
-    terms = load_terms()
-    print(f"Loaded {{len(terms)}} terms.")
-    for t in terms:
-        p = d / f"{{t.get('slug', t['id'])}}.md"
-        p.write_text(term_md(t), encoding="utf-8")
-        print(f"  ✅ {{p}}")
-    (d/"index.md").write_text(alpha_idx(terms), encoding="utf-8")
-    print("  ✅ docs/terms/index.md")
-    (d/"categories.md").write_text(cat_idx(terms), encoding="utf-8")
-    print("  ✅ docs/terms/categories.md")
-
-if __name__ == "__main__":
-    main()
-''',
-
-    "docs/index.md": f"""---
+FILES["docs/index.md"] = textwrap.dedent(f'''\
+---
 hide: [navigation, toc]
 ---
 
@@ -362,9 +390,9 @@ hide: [navigation, toc]
     [:octicons-arrow-right-24: درباره](about.md)
 
 </div>
-""",
+''')
 
-    "docs/about.md": f"""\
+FILES["docs/about.md"] = textwrap.dedent(f'''\
 # دربارهٔ پروژه
 
 فرهنگ واژه‌های تخصصی مهندسی یک پروژهٔ آزاد و مشارکتی است که به مرور همهٔ رشته‌های مهندسی را پوشش خواهد داد.  
@@ -378,9 +406,9 @@ hide: [navigation, toc]
 
 ## تماس
 از طریق [Issues]({REPO_URL}/issues) در GitHub با ما در میان بگذارید.
-""",
+''')
 
-    "docs/contribute.md": f"""\
+FILES["docs/contribute.md"] = textwrap.dedent(f'''\
 # مشارکت در توسعهٔ فرهنگ مهندسی
 
 شما هم می‌توانید واژه‌های رشتهٔ خود را به این مجموعه اضافه کنید.
@@ -395,9 +423,9 @@ hide: [navigation, toc]
 - معادل‌ها به زبان‌های دیگر (حداقل انگلیسی) ذکر شود.
 - در صورت امکان استاندارد یا منبع معتبر قید گردد.
 - دسته‌بندی مرتبط (مثلاً «مهندسی برق») انتخاب شود.
-""",
+''')
 
-    "docs/citation.md": f"""\
+FILES["docs/citation.md"] = textwrap.dedent(f'''\
 # نحوهٔ ارجاع
 
 ## کل فرهنگ
@@ -412,70 +440,148 @@ hide: [navigation, toc]
   title = {{{SITE_NAME}}},
   year  = {{2026}},
   url   = {{{SITE_URL}}}
-}}""",
+}}
+```
+''')
 
-".github/workflows/deploy.yml": f"""
+# مهم‌ترین اصلاح: بدون push در mike، چون Pages از artifact استفاده می‌کند
+FILES[".github/workflows/deploy.yml"] = textwrap.dedent(f'''\
 name: Deploy
 on:
-push:
-branches: [main, master]
-workflow_dispatch:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
 permissions:
-contents: write
-pages: write
-id-token: write
+  contents: write
+  pages: write
+  id-token: write
 concurrency:
-group: pages
-cancel-in-progress: false
+  group: pages
+  cancel-in-progress: false
 jobs:
-build-deploy:
-runs-on: ubuntu-latest
-environment:
-name: github-pages
-url: ${{{{ steps.deploy.outputs.page_url }}}}
-steps:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{{{ steps.deploy.outputs.page_url }}}}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{{{ secrets.GITHUB_TOKEN }}}}
 
-uses: actions/checkout@v4
-with:
-fetch-depth: 0
-token: ${{{{ secrets.GITHUB_TOKEN }}}}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-uses: actions/setup-python@v5
-with:
-python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-uses: actions/setup-node@v4
-with:
-node-version: '20'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-name: Install dependencies
-run: pip install -r requirements.txt
+      - name: Generate Markdown pages
+        run: python scripts/build_pages.py
 
-name: Generate Markdown pages
-run: python scripts/build_pages.py
+      - name: Configure Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
 
-name: Configure Git
-run: |
-git config user.name github-actions[bot]
-git config user.email github-actions[bot]@users.noreply.github.com
+      - name: Build site with mike (v1, no push)
+        run: mike deploy --update-aliases v1 latest --deploy-prefix .
 
-name: Build and deploy with mike (v1)
-run: mike deploy --push --update-aliases v1 latest --deploy-prefix .
+      - name: Copy PWA manifest
+        run: cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
 
-name: Copy PWA manifest
-run: cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
+      - name: Build Pagefind index
+        run: |
+          npx pagefind --site site --output-subdir pagefind
 
-name: Build Pagefind index
-run: |
-npx pagefind --site site --output-subdir pagefind
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
 
-name: Upload Pages artifact
-uses: actions/upload-pages-artifact@v3
-with:
-path: ./site
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        id: deploy
+''')
 
-name: Deploy to GitHub Pages
-uses: actions/deploy-pages@v4
-id: deploy
-""",
-}
+FILES[".gitignore"] = textwrap.dedent('''\
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# MkDocs
+site/
+.cache/
+
+# Node
+node_modules/
+
+# محیط مجازی
+venv/
+.env
+''')
+
+# ------------------------- اجرای اصلی -------------------------
+def validate_yaml(path: Path):
+    """بررسی صحت فایل YAML با PyYAML."""
+    import yaml
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            yaml.safe_load(f)
+        print(f"  ✅ صحت YAML بررسی شد: {path}")
+    except Exception as e:
+        print(f"  ❌ خطای YAML در {path}: {e}")
+        sys.exit(1)
+
+def main():
+    print("🚀 راه‌اندازی فاز ۲ (فرهنگ مهندسی) — نسخهٔ کمال‌گرا")
+    print("="*60)
+
+    # 1. ساخت پوشه‌ها و نوشتن فایل‌ها
+    for rel_path, content in FILES.items():
+        p = Path(rel_path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(content, encoding="utf-8")
+        # تنظیم مجوز اجرایی برای اسکریپت‌ها (فقط روی سیستم‌های سازگار)
+        if p.suffix == ".py" or rel_path.endswith("/deploy.yml"):
+            try:
+                p.chmod(0o755)  # rwxr-xr-x
+            except Exception:
+                pass  # در ویندوز بی‌خطر
+        print(f"  ✅ {rel_path}")
+
+    # 2. اعتبارسنجی فایل‌های کلیدی YAML
+    print("\n🔍 بررسی صحت فایل‌های پیکربندی...")
+    # mkdocs.yml حاوی تگ‌های !!python است و با safe_load خطا می‌دهد؛ خطا را نادیده بگیرید.
+    try:
+        import yaml
+        with Path("mkdocs.yml").open("r", encoding="utf-8") as f:
+            yaml.safe_load(f)
+        print("  ✅ صحت YAML بررسی شد: mkdocs.yml")
+    except Exception as e:
+        print(f"  ⚠️ هشدار: بررسی خودکار mkdocs.yml رد شد ({e}) — این فایل مخصوص MkDocs است و مشکلی ندارد.")
+    # terms.yaml باید حتماً معتبر باشد.
+    validate_yaml(Path("data/terms.yaml"))
+
+    # 3. پیام‌های راهنما
+    print("\n📌 کار تمام شد! حالا به ترتیب:")
+    print("1. مطمئن شوید Python و pip نصب هستند.")
+    print("2. در ترمینال (محیط مجازی فعال باشد):")
+    print("   pip install -r requirements.txt")
+    print("3. فایل‌های جدید را commit و push کنید:")
+    print("   git add .")
+    print('   git commit -m "فاز ۲: نسخه‌بندی، Pagefind، PWA و تعمیم به مهندسی"')
+    print("   git push origin main")
+    print("4. به تب Actions در GitHub بروید و منتظر سبز شدن workflow بمانید.")
+    print(f"5. سایت شما در آدرس {SITE_URL} و نسخهٔ پایدار در {SITE_URL}v1/ در دسترس خواهد بود.")
+    print("\n💡 نکته: هر بار که فایل terms.yaml را تغییر دهید، صفحات Markdown در CI دوباره ساخته می‌شوند.")
+    print("💡 برای افزودن رشته‌های جدید، کافی است واژه‌ها را با دسته‌بندی مناسب به YAML اضافه کنید.")
+
+if __name__ == "__main__":
+    main()

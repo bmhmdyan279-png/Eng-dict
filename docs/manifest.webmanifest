@@ -1,7 +1,7 @@
 {
-  "name": "فرهنگ واژه‌های تخصصی بتن",
-  "short_name": "بتن دیکت",
-  "description": "فرهنگ لغت آنلاین واژه‌های تخصصی بتن",
+  "name": "فرهنگ واژه‌های تخصصی مهندسی",
+  "short_name": "EngDict",
+  "description": "فرهنگ لغت آنلاین و چندزبانهٔ واژه‌های فنی و مهندسی",
   "start_url": "/Eng-dict/",
   "display": "standalone",
   "background_color": "#009688",

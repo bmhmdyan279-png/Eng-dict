@@ -1,8 +1,9 @@
 // بارگذاری Pagefind بعد از رندر صفحه
 document.addEventListener("DOMContentLoaded", () => {
   if (window.__pagefind__) return;
-  const base = document.querySelector('meta[name="base"]')?.content
-             || document.querySelector('link[rel="canonical"]')?.href.replace(/\/+$/, '') + '/';
+  const base = document.querySelector('link[rel="canonical"]')?.href.replace(/\/+$/, '') + '/'
+             || document.querySelector('meta[name="base"]')?.content
+             || window.location.origin + '/';
   const script = document.createElement("script");
   script.type = "module";
   script.src = base + "pagefind/pagefind.js";

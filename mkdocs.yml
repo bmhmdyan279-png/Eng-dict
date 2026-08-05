@@ -1,5 +1,5 @@
-site_name: فرهنگ واژه‌های تخصصی بتن
-site_description: فرهنگ لغت آنلاین واژه‌های تخصصی بتن
+site_name: فرهنگ واژه‌های تخصصی مهندسی
+site_description: فرهنگ لغت آنلاین و چندزبانهٔ واژه‌های فنی و مهندسی
 site_url: https://bmhmdyan279-png.github.io/Eng-dict/
 repo_url: https://github.com/bmhmdyan279-png/Eng-dict
 repo_name: bmhmdyan279-png/Eng-dict
@@ -74,8 +74,7 @@ extra:
 
 extra_css:
   - assets/css/extra.css
-extra_files:
-  - manifest.webmanifest
+
 extra_javascript:
   - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js", defer: true }
   - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js", defer: true }
