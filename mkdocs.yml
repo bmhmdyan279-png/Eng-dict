@@ -3,6 +3,7 @@ site_description: فرهنگ لغت آنلاین واژه‌های تخصصی ب
 site_url: https://bmhmdyan279-png.github.io/Eng-dict/
 repo_url: https://github.com/bmhmdyan279-png/Eng-dict
 repo_name: bmhmdyan279-png/Eng-dict
+site_dir: site
 
 theme:
   name: material
@@ -17,26 +18,34 @@ theme:
     - search.share
     - navigation.top
     - navigation.footer
+    - navigation.indexes
+    - navigation.tabs
     - content.tabs.link
     - content.code.copy
-    - navigation.indexes
+    - content.action.edit
   palette:
     - scheme: default
       primary: teal
       accent: teal
       toggle:
         icon: material/brightness-7
-        name: حالت تاریک
+        name: تاریک شود
     - scheme: slate
       primary: teal
       accent: teal
       toggle:
         icon: material/brightness-4
-        name: حالت روشن
+        name: روشن شود
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/icon.svg
+  favicon: assets/icon.svg
 
 plugins:
   - search:
       lang: [fa, en]
+  - offline:
+      enabled: true
 
 markdown_extensions:
   - tables
@@ -50,14 +59,34 @@ markdown_extensions:
       generic: true
   - pymdownx.highlight:
       anchor_linenums: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
+
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bmhmdyan279-png/Eng-dict
 
 extra_css:
   - assets/css/extra.css
 extra_files:
   - manifest.webmanifest
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
-  - assets/js/math.js
+  - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js", defer: true }
+  - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js", defer: true }
+  - { path: assets/js/math.js, defer: true }
+  - { path: assets/js/pagefind.js, type: module }
+
+nav:
+  - خانه: index.md
+  - واژه‌ها:
+    - الفبایی: terms/index.md
+    - دسته‌بندی: terms/categories.md
+  - مشارکت: contribute.md
+  - درباره: about.md
+  - ارجاع: citation.md

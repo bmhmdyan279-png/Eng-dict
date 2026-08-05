@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
-"""ساخت صفحات Markdown از داده‌های YAML."""
-import sys
-from pathlib import Path
+"""ساخت صفحات Markdown از YAML (به‌روزشده برای فاز ۲)."""
 import yaml
+from pathlib import Path
 
-def load_terms(path: str = "data/terms.yaml") -> list:
-    p = Path(path)
-    if not p.exists():
-        print(f"❌ فایل {path} پیدا نشد. ابتدا setup.py را اجرا کنید.", file=sys.stderr)
-        sys.exit(1)
-    with p.open("r", encoding="utf-8") as f:
-        data = yaml.safe_load(f) or []
-    print(f"📂 {len(data)} واژه از YAML بارگذاری شد.")
-    return data
+def load_terms(p="data/terms.yaml"):
+    with Path(p).open("r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or []
 
-def term_markdown(t: dict) -> str:
+def term_md(t):
     fa = t.get("fa", t["id"])
     en = t.get("languages", {}).get("en", "")
     slug = t.get("slug", t["id"])
@@ -26,135 +19,87 @@ def term_markdown(t: dict) -> str:
     src = t.get("source", "")
     upd = t.get("last_updated", "")
 
-    lines = [
-        "---",
-        f"title: {fa}",
-        f"description: تعریف {fa} در فرهنگ بتن",
-        "---",
-        "",
-        f"# {fa}{f' / {en}' if en else ''}",
-        "",
-    ]
+    L = [f"---", f"title: {fa}", f"description: تعریف {fa} در فرهنگ بتن",
+         f"keywords: [{', '.join([fa, en, cat])}]", f"---", "",
+         f"# {fa}{f' / {en}' if en else ''}", ""]
+
+    aliases = t.get("aliases", [])
+    if aliases:
+        L.append(f"**هم‌نام‌ها:** {'، '.join(aliases)}
+")
 
     if langs:
-        lines += ["## معادل‌ها", "", "| زبان | معادل |", "|------|-------|"]
-        lang_names = {"en":"انگلیسی","fr":"فرانسوی","de":"آلمانی","ar":"عربی","tr":"ترکی","ru":"روسی"}
-        for code, word in langs.items():
-            lines.append(f"| {lang_names.get(code, code.upper())} | {word} |")
-        lines.append("")
+        L += ["## معادل‌ها", "", "| زبان | معادل |", "|------|-------|"]
+        names = {"en":"انگلیسی","fr":"فرانسوی","de":"آلمانی","ar":"عربی","tr":"ترکی","ru":"روسی","es":"اسپانیایی"}
+        for c, v in langs.items():
+            L.append(f"| {names.get(c, c.upper())} | {v} |")
+        L.append("")
 
     if defn:
-        lines += ["## تعریف", "", defn, ""]
+        L += ["## تعریف", "", defn, ""]
 
-    lines += ["## دسته", "", f"`{cat}`", ""]
+    L += [f"## دسته", "", f"`{cat}`", ""]
 
     if stds:
-        lines += ["## استانداردهای مرتبط", ""]
-        for s in stds:
-            lines.append(f"- `{s}`")
-        lines.append("")
+        L += ["## استانداردهای مرتبط", ""]
+        for s in stds: L.append(f"- `{s}`")
+        L.append("")
 
     if rel:
-        lines += ["## واژه‌های مرتبط", ""]
-        for r in rel:
-            lines.append(f"- [{r}](./{r}.md)")
-        lines.append("")
+        L += ["## واژه‌های مرتبط", ""]
+        for r in rel: L.append(f"- [{r}](./{r}.md)")
+        L.append("")
 
     if src or upd:
-        lines += ["## اطلاعات تکمیلی", ""]
-        if src:
-            lines.append(f"- **منبع:** `{src}`")
-        if upd:
-            lines.append(f"- **به‌روزرسانی:** {upd}")
-        lines.append("")
+        L += ["## اطلاعات تکمیلی", ""]
+        if src: L.append(f"- **منبع:** `{src}`")
+        if upd: L.append(f"- **به‌روزرسانی:** {upd}")
+        L.append("")
 
-    # جعبهٔ ارجاع
-    lines += [
-        "---",
-        "",
-        '??? info "نحوهٔ ارجاع"',
-        "",
-        f"    فرهنگ واژه‌های تخصصی بتن، مدخل «{fa}»، {upd or 'بی‌تاریخ'}.",
-        "",
-    ]
-    return "\n".join(lines)
+    L += ["---", "", '??? info "نحوهٔ ارجاع"', "",
+          f"    فرهنگ واژه‌های تخصصی بتن، مدخل «{fa}»، {upd}.", ""]
+    return "\n".join(L)
 
-def alphabetical_index(terms: list) -> str:
-    lines = [
-        "---",
-        "title: فهرست الفبایی",
-        "---",
-        "",
-        "# فهرست الفبایی واژه‌ها",
-        "",
-        "همهٔ واژه‌ها به ترتیب الفبای فارسی.",
-        "",
-    ]
-    grouped = {}
+def alpha_idx(terms):
+    L = ["---", "title: فهرست الفبایی", "---", "",
+         "# فهرست الفبایی واژه‌ها", "",
+         "همهٔ واژه‌ها به ترتیب الفبای فارسی.", ""]
+    by_l = {}
     for t in terms:
         fa = t.get("fa", t["id"])
-        initial = fa[0] if fa else "?"
-        grouped.setdefault(initial, []).append((fa, t.get("slug", t["id"])))
+        by_l.setdefault(fa[0] if fa else "?", []).append((fa, t.get("slug", t["id"])))
+    alphabet = "آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی"
+    letters = sorted(by_l.keys(), key=lambda x: alphabet.index(x) if x in alphabet else 999)
+    L.append("**پرش به حرف:** " + " · ".join(f"[{l}](#{l})" for l in letters) + "\n")
+    for l in letters:
+        L += [f"## <a name='{l}'></a>{l}", ""]
+        for fa, s in sorted(by_l[l]): L.append(f"- [{fa}](./{s}.md)")
+        L.append("")
+    return "\n".join(L)
 
-    # الفبای فارسی (با احتساب حروف ویژه)
-    persian_alphabet = "آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی"
-    sorted_initials = sorted(
-        grouped.keys(),
-        key=lambda x: persian_alphabet.index(x) if x in persian_alphabet else 999
-    )
-    jump_line = "**پرش به حرف:** " + " · ".join(f"[{l}](#{l})" for l in sorted_initials) + "\n"
-    lines.append(jump_line)
-
-    for initial in sorted_initials:
-        lines.append(f"## <a name='{initial}'></a>{initial}")
-        lines.append("")
-        for fa, slug in sorted(grouped[initial]):
-            lines.append(f"- [{fa}](./{slug}.md)")
-        lines.append("")
-    return "\n".join(lines)
-
-def category_index(terms: list) -> str:
-    lines = [
-        "---",
-        "title: دسته‌بندی",
-        "---",
-        "",
-        "# واژه‌ها بر اساس دسته",
-        "",
-    ]
-    grouped = {}
-    for t in terms:
-        cat = t.get("category", "سایر")
-        grouped.setdefault(cat, []).append(t)
-
-    for cat, items in sorted(grouped.items()):
-        lines.append(f"## {cat}")
-        lines.append("")
-        # مرتب‌سازی بر اساس نام فارسی
-        for item in sorted(items, key=lambda x: x.get("fa", "")):
-            lines.append(f"- [{item['fa']}](./{item.get('slug', item['id'])}.md)")
-        lines.append("")
-    return "\n".join(lines)
+def cat_idx(terms):
+    L = ["---", "title: دسته‌بندی", "---", "", "# واژه‌ها بر اساس دسته", ""]
+    by_c = {}
+    for t in terms: by_c.setdefault(t.get("category","سایر"), []).append(t)
+    for c, ts in sorted(by_c.items()):
+        L += [f"## {c}", ""]
+        for t in sorted(ts, key=lambda x: x.get("fa","")):
+            L.append(f"- [{t['fa']}](./{t.get('slug',t['id'])}.md)")
+        L.append("")
+    return "\n".join(L)
 
 def main():
-    terms_dir = Path("docs/terms")
-    terms_dir.mkdir(parents=True, exist_ok=True)
-
+    d = Path("docs/terms"); d.mkdir(parents=True, exist_ok=True)
     terms = load_terms()
+    print(f"Loaded {len(terms)} terms.")
     for t in terms:
-        slug = t.get("slug", t["id"])
-        file_path = terms_dir / f"{slug}.md"
-        file_path.write_text(term_markdown(t), encoding="utf-8")
-        print(f"  ✅ {file_path}")
-
-    # صفحات شاخص
-    idx_path = terms_dir / "index.md"
-    idx_path.write_text(alphabetical_index(terms), encoding="utf-8")
-    print(f"  ✅ {idx_path}")
-
-    cat_path = terms_dir / "categories.md"
-    cat_path.write_text(category_index(terms), encoding="utf-8")
-    print(f"  ✅ {cat_path}")
+        p = d / f"{t.get('slug', t['id'])}.md"
+        p.write_text(term_md(t), encoding="utf-8")
+        print(f"  ✅ {p}")
+    (d/"index.md").write_text(alpha_idx(terms), encoding="utf-8")
+    print("  ✅ docs/terms/index.md")
+    (d/"categories.md").write_text(cat_idx(terms), encoding="utf-8")
+    print("  ✅ docs/terms/categories.md")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,14 @@
+{
+  "name": "فرهنگ واژه‌های تخصصی بتن",
+  "short_name": "بتن دیکت",
+  "description": "فرهنگ لغت آنلاین واژه‌های تخصصی بتن",
+  "start_url": "/Eng-dict/",
+  "display": "standalone",
+  "background_color": "#009688",
+  "theme_color": "#009688",
+  "dir": "rtl",
+  "lang": "fa",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -4,11 +4,11 @@ on:
     branches: [main, master]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 jobs:
   build-deploy:
@@ -18,14 +18,49 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt
-      - run: python scripts/build_pages.py
-      - run: mkdocs build
-      - uses: actions/upload-pages-artifact@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate Markdown pages
+        run: python scripts/build_pages.py
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Build and deploy with mike (v1)
+        run: mike deploy --push --update-aliases v1 latest --deploy-prefix .
+
+      - name: Copy Pagefind assets into versioned dirs
+        run: |
+          cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
+
+      - name: Build Pagefind index
+        run: |
+          npx pagefind --site site --output-subdir pagefind
+          # برای نسخه‌بندی mike، باید در ریشه باشد
+          if [ -d "site/pagefind" ]; then
+            echo "✅ Pagefind index built"
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./site
-      - uses: actions/deploy-pages@v4
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
         id: deploy
