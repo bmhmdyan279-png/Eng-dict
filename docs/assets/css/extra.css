@@ -1,1 +1,54 @@
 /* سبک‌های سفارشی فرهنگ مهندسی */
+
+/* اصلاح نمایش جداول در موبایل */
+.md-typeset table:not([class]) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* استایل کارت‌های واژه */
+.term-card {
+    border-right: 4px solid var(--md-primary-fg-color);
+    padding: 1rem;
+    background: var(--md-code-bg-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+}
+
+.term-card:hover {
+    transform: translateX(-5px);
+}
+
+/* واژه‌های مرتبط */
+.related-terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.related-terms a {
+    padding: 0.3rem 0.8rem;
+    background: var(--md-accent-fg-color--transparent);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.related-terms a:hover {
+    background: var(--md-primary-fg-color);
+    color: white;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .term-card {
+        padding: 0.8rem;
+    }
+    
+    .related-terms {
+        flex-direction: column;
+    }
+}
