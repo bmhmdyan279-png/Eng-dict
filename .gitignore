@@ -13,3 +13,4 @@ node_modules/
 # محیط مجازی
 venv/
 .env
+.idea/
