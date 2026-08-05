@@ -55,7 +55,8 @@ markdown_extensions:
 
 extra_css:
   - assets/css/extra.css
-
+extra_files:
+  - manifest.webmanifest
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
