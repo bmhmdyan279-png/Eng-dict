@@ -106,4 +106,3 @@ python scripts/build_pages.py
 ---
 
 **توسعه‌دهنده:** [bmhmdyan279-png](https://github.com/bmhmdyan279-png)
-```
