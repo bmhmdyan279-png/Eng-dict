@@ -1,9 +1,8 @@
-site_name: فرهنگ واژه‌های تخصصی مهندسی
-site_description: فرهنگ لغت آنلاین و چندزبانهٔ واژه‌های فنی و مهندسی
-site_url: https://bmhmdyan279-png.github.io/Eng-dict/
-repo_url: https://github.com/bmhmdyan279-png/Eng-dict
-repo_name: bmhmdyan279-png/Eng-dict
-site_dir: site
+site_name: فرهنگ واژگان تخصصی مهندسی
+site_description: دیکشنری تخصصی مهندسی با معادل‌های چندزبانه (FA/EN/FR/DE/AR)
+site_url: https://bmhmdyan279-png.github.io/eng-terms-fa/
+repo_url: https://github.com/bmhmdyan279-png/eng-terms-fa
+repo_name: eng-terms-fa
 
 theme:
   name: material
@@ -12,86 +11,72 @@ theme:
   font:
     text: Vazirmatn
     code: Fira Code
-  features:
-    - search.suggest
-    - search.highlight
-    - search.share
-    - navigation.top
-    - navigation.footer
-    - navigation.indexes
-    - navigation.tabs
-    - content.tabs.link
-    - content.code.copy
-    - content.action.edit
   palette:
     - scheme: default
-      primary: teal
-      accent: teal
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
-        name: تاریک شود
+        name: تغییر به حالت شب
     - scheme: slate
-      primary: teal
-      accent: teal
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-4
-        name: روشن شود
-  icon:
-    repo: fontawesome/brands/github
-  logo: assets/icon.svg
-  favicon: assets/icon.svg
+        name: تغییر به حالت روز
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+    - navigation.instant
+    - navigation.tracking
 
 plugins:
-  - search:
-      lang: [fa, en]
-  - offline:
-      enabled: true
+  - search
+  - mike
 
 markdown_extensions:
-  - tables
-  - attr_list
-  - def_list
-  - admonition
-  - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.arithmatex:
-      generic: true
   - pymdownx.highlight:
       anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - toc:
-      permalink: true
-
-extra:
-  version:
-    provider: mike
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/bmhmdyan279-png/Eng-dict
+  - pymdownx.arithmatex:
+      generic: true
 
 extra_css:
-  - assets/css/extra.css
+  - assets/extra.css
 
 extra_javascript:
-  - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js", defer: true }
-  - { path: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js", defer: true }
-  - { path: assets/js/math.js, defer: true }
-  - { path: assets/js/pagefind.js, type: module }
+  - assets/math.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bmhmdyan279-png/eng-terms-fa
+  alternate:
+    - name: فارسی
+      link: /
+      lang: fa
 
 nav:
-  - 🏠 خانه: index
-  - 📖 واژه‌نامه:
-      - جستجوی الفبایی: terms/
-      - آرماتور: terms/armator
-      - بتن: terms/beton
-      - سیمان: terms/siman
-  - 📖 واژگان کتاب: book-vocab
-  - 🏗️ اصطلاحات ساختمانی: construction-terms
-  - 📱 بارکد کتاب: qr
-  - ✍️ مشارکت: contribute
-  - 📄 درباره: about
-  - 📝 استناد: citation
-  - 📨 فرم غیرفنی: contribute-form
+  - 🏠 خانه: index.md
+  - 📖 فهرست واژگان: terms/index.md
+  - 📱 بارکد کتاب: qr.md
+  - ✍️ مشارکت: contribute.md
+  - 📄 درباره: about.md
+  - 📝 استناد: citation.md
+  - 📨 فرم مشارکت غیرفنی: contribute-form.md

@@ -1,9 +1,8 @@
-# Ensure line endings are LF for all text files
+# Force Unix line endings
 * text=auto eol=lf
+
+# Python files
+*.py text eol=lf
 *.md text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
-*.py text eol=lf
-*.css text eol=lf
-*.js text eol=lf
-*.toml text eol=lf

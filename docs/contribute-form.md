@@ -1,29 +1,29 @@
 ---
-title: فرم مشارکت
-
+title: فرم مشارکت غیرفنی
+description: پیشنهاد واژه بدون نیاز به دانش فنی
 ---
 
-# ✍️ فرم پیشنهاد واژه (به‌زودی)
+# فرم مشارکت غیرفنی
 
-در حال حاضر برای مشارکت از این روش‌ها استفاده کنید:
+اگر دانش کار با Git را ندارید، می‌توانید از طریق فرم زیر مشارکت کنید.
 
-## 🔧 راه فنی (توصیه‌شده)
+## 📝 فرم پیشنهاد واژه
 
-[:material-github: پیشنهاد واژهٔ جدید](https://github.com/bmhmdyan279-png/Eng-dict/issues/new?template=new-term.yml){: .md-button .md-button--primary }
+!!! info "راهنما"
+    لطفاً فیلدهای ضروری را پر کنید. پس از بررسی، واژه شما اضافه خواهد شد.
 
-[:material-pencil: اصلاح واژهٔ موجود](https://github.com/bmhmdyan279-png/Eng-dict/issues/new?template=correction.yml){: .md-button }
+<iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+        width="100%" 
+        height="800" 
+        frameborder="0">
+    در حال بارگذاری...
+</iframe>
 
-## 📧 راه ساده
+!!! tip "نکته"
+    لینک `YOUR_FORM_ID` را با شناسه فرم Google خود جایگزین کنید.
 
-اگر با GitHub راحت نیستید، این اطلاعات را به ایمیل پروژه بفرستید:
+## ✉️ تماس مستقیم
 
-1. **واژهٔ فارسی**
-2. **معادل انگلیسی**
-3. **دسته‌بندی تخصصی**
-4. **تعریف کوتاه**
-5. **منبع یا استاندارد**
+📧 **ایمیل:** bmhmdyan279@gmail.com
 
-راه‌های تماس:
-
-- [GitHub Issues](https://github.com/bmhmdyan279-png/Eng-dict/issues)
-- ایمیل: (به‌زودی)
+لطفاً در عنوان ایمیل عبارت «پیشنهاد واژه» را ذکر کنید.
