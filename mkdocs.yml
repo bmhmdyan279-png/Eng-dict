@@ -88,8 +88,8 @@ nav:
       - آرماتور: terms/armator
       - بتن: terms/beton
       - سیمان: terms/siman
-  - 📖 واژگان کتاب: book-vocab        # ← این خط اضافه شود
-  - 🏗️ اصطلاحات ساختمانی: construction-terms  # ← این خط هم اضافه شود
+  - 📖 واژگان کتاب: book-vocab
+  - 🏗️ اصطلاحات ساختمانی: construction-terms
   - 📱 بارکد کتاب: qr
   - ✍️ مشارکت: contribute
   - 📄 درباره: about
