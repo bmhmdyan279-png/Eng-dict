@@ -63,7 +63,7 @@
 -   :material-book:{ .lg .middle } **رواداری / تحمل** (Tolerance)
     ---
     برابر مصوب فرهنگستان زبان و ادب فارسی.
-    [:octicons-arrow-right-24: مشاهده جزئیات](terms/رواداری - تحمل.md)
+    [:octicons-arrow-right-24: مشاهده جزئیات](terms/رواداری و تحمل.md)
 
 -   :material-book:{ .lg .middle } **بسامد** (Frequency)
     ---
