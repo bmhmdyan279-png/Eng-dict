@@ -10,4 +10,4 @@
 - **داده‌محور** — ساختار YAML برای استفاده در اپلیکیشن‌های آینده
 
 ## تماس
-از طریق [Issues](https://github.com/bmhmdyan279-png/Eng-dict/issues) در GitHub با ما در میان بگذارید.
+از طریق [Issues](https://github.com/bmhmdyan279-png/eng-terms-fa/issues) در GitHub با ما در میان بگذارید.

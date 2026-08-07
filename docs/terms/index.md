@@ -1,182 +1,178 @@
 ---
 title: فهرست واژگان
-description: فهرست الفبایی تمام واژگان تخصصی مهندسی
 ---
 
 # فهرست واژگان
-
-!!! note "راهنما"
-    برای جستجوی واژه خاص، از نوار جستجوی بالا استفاده کنید.
 
 ## فهرست الفبایی
 
 
 ### حرف آ
 
-- [آب بندی](abbndy.md)
-- [آب چین](abchyn.md)
-- [آجر سه قدی](ajrshghdy.md)
-- [آجر فارسی بُر](ajrfarsybr.md)
-- [آجر نبشی](ajrnbshy.md)
-- [آجر نره](ajrnrh.md)
-- [آجر چهارگوش](ajrchhargvsh.md)
-- [آرماتور](armator.md)
-- [آسفالت](asfalt.md)
-- [آسفالت سوخته](asfaltsvkhth.md)
-- [آلوئک](alvyk.md)
-- [آمادگاه](depot.md)
-- [آهن گُم](ahngm.md)
-- [آویز](avyz.md)
-- [آچار F](achar.md)
-- [آژند](cement.md)
+- [آب بندی](./b-bndy.md)
+- [آب چین](./b-chyn.md)
+- [آجر سه قدی](./jr-sh-qdy.md)
+- [آجر فارسی بُر](./jr-frsy-bur.md)
+- [آجر نبشی](./jr-nbshy.md)
+- [آجر نره](./jr-nrh.md)
+- [آجر چهارگوش](./jr-chhrgwsh.md)
+- [آرماتور](./armator.md)
+- [آسفالت](./sflt.md)
+- [آسفالت سوخته](./sflt-swkhth.md)
+- [آلوئک](./lwykh.md)
+- [آمادگاه](./depot.md)
+- [آهن گُم](./hn-gum.md)
+- [آویز](./wyz.md)
+- [آچار F](./chr-f.md)
+- [آژند](./cement.md)
 
 ### حرف ا
 
-- [اسپر](aspr.md)
-- [اسکوپ](askvp.md)
-- [اشپیل](ashpyl.md)
-- [افت](aft.md)
-- [الاستیسیته](alastysyth.md)
-- [الحاق](alhagh.md)
-- [اندازه غربالی](mesh.md)
-- [اورلپ](avrlp.md)
-- [اکسپوزه](akspvzh.md)
-- [ایزولاسیون](ayzvlasyvn.md)
-- [ایزوله](ayzvlh.md)
+- [اسپر](./spr.md)
+- [اسکوپ](./skhwp.md)
+- [اشپیل](./shpyl.md)
+- [افت](./ft.md)
+- [الاستیسیته](./lstysyth.md)
+- [الحاق](./lhq.md)
+- [اندازه غربالی](./mesh.md)
+- [اورلپ](./wrlp.md)
+- [اکسپوزه](./khspwzh.md)
+- [ایزولاسیون](./yzwlsywn.md)
+- [ایزوله](./yzwlh.md)
 
 ### حرف ب
 
-- [بالشتک](balshtk.md)
-- [بتن](beton.md)
-- [بسامد](frequency.md)
-- [بطری چگالی](pycnometer.md)
-- [بلوکاژ](blvkazh.md)
-- [بند آجر](bndajr.md)
-- [بند کلوکی](bndklvky.md)
+- [بالشتک](./blshtkh.md)
+- [بتن](./beton.md)
+- [بسامد](./frequency.md)
+- [بطری چگالی](./pycnometer.md)
+- [بلوکاژ](./blwkhj.md)
+- [بند آجر](./bnd-jr.md)
+- [بند کلوکی](./bnd-khlwkhy.md)
 
 ### حرف پ
 
-- [پاتاق](patagh.md)
-- [پاره آجر](parhajr.md)
-- [پاسنگ](pasng.md)
-- [پالانه](palanh.md)
-- [پاکار](pakar.md)
-- [پخ](pkh.md)
-- [پشت بغل](pshtbghl.md)
-- [پشت بند](pshtbnd.md)
-- [پلیت](plyt.md)
-- [پمپ کردن](pmpkrdn.md)
-- [پوتر](pvtr.md)
-- [پوست ساپ](pvstsap.md)
-- [پوسته](pvsth.md)
-- [پکافته](pkafth.md)
-- [پیستوله](pystvlh.md)
+- [پاتاق](./ptq.md)
+- [پاره آجر](./prh-jr.md)
+- [پاسنگ](./psng.md)
+- [پالانه](./plnh.md)
+- [پاکار](./pkhr.md)
+- [پخ](./pkh.md)
+- [پشت بغل](./psht-bgl.md)
+- [پشت بند](./psht-bnd.md)
+- [پلیت](./plyt.md)
+- [پمپ کردن](./pmp-khrdn.md)
+- [پوتر](./pwtr.md)
+- [پوست ساپ](./pwst-sp.md)
+- [پوسته](./pwsth.md)
+- [پکافته](./pkhfth.md)
+- [پیستوله](./pystwlh.md)
 
 ### حرف ت
 
-- [تاج قوس](tajghvs.md)
-- [تاریک کردن](tarykkrdn.md)
-- [تالار](gallery.md)
-- [تاوَن](oven.md)
-- [تخته شدن](tkhthshdn.md)
-- [تخماق](tkhmagh.md)
-- [تراورس](travrs.md)
-- [تشریفات](protocol.md)
-- [تماسه](tmash.md)
-- [تنش](tnsh.md)
-- [تنگ افتادن](tngaftadn.md)
-- [توری فنسی](tvryfnsy.md)
-- [توپی](tvpy.md)
-- [تیر شاخص](tyrshakhs.md)
-- [تیزون](tyzvn.md)
-- [تیغه](tyghh.md)
+- [تاج قوس](./tj-qws.md)
+- [تاریک کردن](./trykh-khrdn.md)
+- [تالار](./gallery.md)
+- [تاوَن](./oven.md)
+- [تخته شدن](./tkhth-shdn.md)
+- [تخماق](./tkhmq.md)
+- [تراورس](./trwrs.md)
+- [تشریفات](./protocol.md)
+- [تماسه](./tmsh.md)
+- [تنش](./tnsh.md)
+- [تنگ افتادن](./tng-ftdn.md)
+- [توری فنسی](./twry-fnsy.md)
+- [توپی](./twpy.md)
+- [تیر شاخص](./tyr-shkhs.md)
+- [تیزون](./tyzwn.md)
+- [تیغه](./tygh.md)
 
 ### حرف ج
 
-- [جان پناه](janpnah.md)
-- [جان گچ گرفته شده](jangchgrfthshdh.md)
-- [جرز](jrz.md)
-- [جُوَک](jvk.md)
-- [جیک](jig-jigging.md)
+- [جان پناه](./jn-pnh.md)
+- [جان گچ گرفته شده](./jn-gch-grfth-shdh.md)
+- [جرز](./jrz.md)
+- [جُوَک](./juwakh.md)
+- [جیک](./jig-jigging.md)
 
 ### حرف چ
 
-- [چارک](chark.md)
-- [چاه کور](chahkvr.md)
-- [چاهک](chahk.md)
-- [چرخ چاه](chrkhchah.md)
-- [چهار دنگ](chhardng.md)
+- [چارک](./chrkh.md)
+- [چاه کور](./chh-khwr.md)
+- [چاهک](./chhkh.md)
+- [چرخ چاه](./chrkh-chh.md)
+- [چهار دنگ](./chhr-dng.md)
 
 ### حرف خ
 
-- [خاک شوره](khakshvrh.md)
-- [خرپشته](khrpshth.md)
-- [خرک](khrk.md)
-- [خط کردن](khtkrdn.md)
-- [خمش](khmsh.md)
-- [خیز](khyz.md)
+- [خاک شوره](./khkh-shwrh.md)
+- [خرپشته](./khrpshth.md)
+- [خرک](./khrkh.md)
+- [خط کردن](./kht-khrdn.md)
+- [خمش](./khmsh.md)
+- [خیز](./khyz.md)
 
 ### حرف د
 
-- [دج](dj.md)
-- [درپوش](drpvsh.md)
-- [دسته](batch.md)
-- [دلیل گذاری](dlylgzary.md)
-- [دول](dvl.md)
-- [دوپوش](dvpvsh.md)
-- [دیوار حائل](dyvarhayl.md)
+- [دج](./dj.md)
+- [درپوش](./drpwsh.md)
+- [دسته](./batch.md)
+- [دلیل گذاری](./dlyl-gdhry.md)
+- [دول](./dwl.md)
+- [دوپوش](./dwpwsh.md)
+- [دیوار حائل](./dywr-hyl.md)
 
 ### حرف ر
 
-- [رایزر](rayzr.md)
-- [رج بنا](rjbna.md)
-- [رقمی](digital.md)
-- [رواداری و تحمل](tolerance.md)
-- [رومی](rvmy.md)
-- [روکار](rvkar.md)
+- [رایزر](./ryzr.md)
+- [رج بنا](./rj-bn.md)
+- [رقمی](./digital.md)
+- [رواداری و تحمل](./tolerance.md)
+- [رومی](./rwmy.md)
+- [روکار](./rwkhr.md)
 
 ### حرف ز
 
-- [زمین زِد](zmynzd.md)
-- [زنجاب](znjab.md)
-- [زیره](zyrh.md)
-- [زیگزال](zygzal.md)
-- [زیگزاگ](zygzag.md)
+- [زمین زِد](./zmyn-zid.md)
+- [زنجاب](./znjb.md)
+- [زیره](./zyrh.md)
+- [زیگزال](./zygzl.md)
+- [زیگزاگ](./zygzg.md)
 
 ### حرف س
 
-- [سبدی](sbdy.md)
-- [سر سفت](srsft.md)
-- [سروا افتاده](srvaaftadh.md)
-- [سرگرداندن](srgrdandn.md)
-- [سنجاقی](snjaghy.md)
-- [سنگ دانه](sngdanh.md)
-- [سِله](slh.md)
-- [سپتیک تانک](sptyktank.md)
-- [سیسپول تانک](syspvltank.md)
-- [سیلت](sylt.md)
-- [سیلر](sylr.md)
-- [سیم آرماتور بندی](symarmatvrbndy.md)
-- [سیمان](siman.md)
-- [سیمان سنگ شده](symansngshdh.md)
+- [سبدی](./sbdy.md)
+- [سر سفت](./sr-sft.md)
+- [سروا افتاده](./srw-ftdh.md)
+- [سرگرداندن](./srgrdndn.md)
+- [سنجاقی](./snjqy.md)
+- [سنگ دانه](./sng-dnh.md)
+- [سِله](./silh.md)
+- [سپتیک تانک](./sptykh-tnkh.md)
+- [سیسپول تانک](./syspwl-tnkh.md)
+- [سیلت](./sylt.md)
+- [سیلر](./sylr.md)
+- [سیم آرماتور بندی](./sym-rmtwr-bndy.md)
+- [سیمان](./siman.md)
+- [سیمان سنگ شده](./symn-sng-shdh.md)
 
 ### حرف ش
 
-- [شاقولی](shaghvly.md)
+- [شاقولی](./shqwly.md)
 
 ### حرف گ
 
-- [گشتاور](gashtavar.md)
+- [گشتاور](./gashtavar.md)
 
 ### حرف ل
 
-- [لرزاننده](vibrator.md)
+- [لرزاننده](./vibrator.md)
 
 ### حرف م
 
-- [مخلوط ساز](batching.md)
+- [مخلوط ساز](./batching.md)
 
 ### حرف و
 
-- [واسنجیدن](calibration.md)
-- [واپایش](control.md)
+- [واسنجیدن](./calibration.md)
+- [واپایش](./control.md)
