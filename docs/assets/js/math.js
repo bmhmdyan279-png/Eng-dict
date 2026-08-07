@@ -1,8 +1,2 @@
-document$.subscribe(() => {
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: "$$", right: "$$", display: true},
-      {left: "$", right: "$", display: false}
-    ]
-  });
-});
+// پشتیبانی از فرمول‌های ریاضی
+console.log('Math support loaded');

@@ -54,27 +54,23 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.arithmatex:
-      generic: true
 
 extra_css:
-  - assets/extra.css
+  - assets/css/extra.css
 
 extra_javascript:
-  - assets/math.js
+  - assets/js/math.js
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/bmhmdyan279-png/eng-terms-fa
-  alternate:
-    - name: فارسی
-      link: /
-      lang: fa
 
 nav:
   - 🏠 خانه: index.md
   - 📖 فهرست واژگان: terms/index.md
+  - 📚 واژگان کتاب: book-vocab.md
+  - 🏗️ اصطلاحات ساختمان: construction-terms.md
   - 📱 بارکد کتاب: qr.md
   - ✍️ مشارکت: contribute.md
   - 📄 درباره: about.md

@@ -1,3 +1,4 @@
+@"
 /* استایل‌های سفارشی برای فرهنگ واژگان */
 
 .term-card {
@@ -36,3 +37,4 @@ table th, table td {
     padding: 0.5rem;
     border: 1px solid var(--md-default-fg-color--light);
 }
+"@ | Out-File -FilePath docs/assets/css/extra.css -Encoding utf8
