@@ -108,5 +108,3 @@ python scripts/build_pages.py
 <<<<<<< HEAD
 **توسعه‌دهنده:** [bmhmdyan279-png](https://github.com/bmhmdyan279-png)
 =======
-**توسعه‌دهنده:** [bmhmdyan279-png](https://github.com/bmhmdyan279-png)
->>>>>>> 638c8fb (Enforce LF line endings and update configs)
