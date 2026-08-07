@@ -1,8 +1,8 @@
-# Force Unix line endings
+# تنظیم خودکار پایان خطوط برای همه فایل‌ها
 * text=auto eol=lf
 
-# Python files
-*.py text eol=lf
+# فایل‌های خاص
 *.md text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+*.py text eol=lf
