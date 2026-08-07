@@ -1,74 +1,59 @@
-name: Deploy
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          python-version: '3.12'
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material mike pyyaml pytest
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
-
-      - name: Install Pagefind locally
-        run: npm install pagefind
-
-      - name: Generate Markdown pages
+      - name: Build pages
         run: python scripts/build_pages.py
 
-      - name: Configure Git
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
+      - name: Run tests
+        run: pytest tests/
 
-      - name: Build site with mike (v1, no push)
-        run: mike deploy --update-aliases v1 latest --deploy-prefix .
+      - name: Build site
+        run: mkdocs build
 
-      - name: Copy PWA manifest
-        run: |
-          if [ -f docs/manifest.webmanifest ]; then
-            cp docs/manifest.webmanifest site/
-            echo "✅ PWA manifest copied"
-          else
-            echo "⚠️ PWA manifest not found, skipping"
-          fi
-
-      - name: Build Pagefind index
-        run: npx pagefind --site site --output-subdir pagefind
-
-      - name: Upload Pages artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./site
 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
-        id: deploy
