@@ -104,7 +104,5 @@ python scripts/build_pages.py
 - **محتوا (واژگان):** Creative Commons BY-SA 4.0 (LICENSE-CONTENT.md)
 
 ---
-
-<<<<<<< HEAD
 **توسعه‌دهنده:** [bmhmdyan279-png](https://github.com/bmhmdyan279-png)
 =======
