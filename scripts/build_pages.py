@@ -125,7 +125,8 @@ description: تعریف و معادل‌های واژه {term_fa}
 [بازگشت به فهرست](index.md)
 """
         output_file = terms_dir / f"{term_fa}.md"
-        with open(output_file, "w", encoding="utf-8") as f:
+        output_file = output_file.replace(" / ", "-").replace("/", "-")
+    with open(output_file, "w", encoding="utf-8") as f:
             f.write(page)
         print(f"   ✓ {term_fa}")
 
