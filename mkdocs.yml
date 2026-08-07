@@ -1,6 +1,6 @@
+site_url: https://bmhmdyan279-png.github.io/eng-terms-fa/
 site_name: فرهنگ واژگان تخصصی مهندسی
 site_description: دیکشنری تخصصی مهندسی با معادل‌های چندزبانه (FA/EN/FR/DE/AR)
-site_url: https://bmhmdyan279-png.github.io/eng-terms-fa/
 repo_url: https://github.com/bmhmdyan279-png/eng-terms-fa
 repo_name: eng-terms-fa
 
@@ -28,8 +28,8 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.top
-    - search.suggest
     - search.highlight
+    - search.suggest
     - content.tabs.link
     - content.code.copy
     - navigation.instant
@@ -62,17 +62,21 @@ extra_javascript:
   - assets/js/math.js
 
 extra:
+  manifest: manifest.webmanifest
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/bmhmdyan279-png/eng-terms-fa
 
+not_in_nav: |
+  terms/*.md
+
 nav:
   - 🏠 خانه: index.md
-  - 📖 فهرست واژگان: terms/index.md
-  - 📚 واژگان کتاب: book-vocab.md
+  - 📖 واژه‌نامه: terms/index.md
+  - 📚 کتاب واژگان: book-vocab.md
   - 🏗️ اصطلاحات ساختمان: construction-terms.md
-  - 📱 بارکد کتاب: qr.md
+  - 📱 کد QR: qr.md
   - ✍️ مشارکت: contribute.md
-  - 📄 درباره: about.md
-  - 📝 استناد: citation.md
-  - 📨 فرم مشارکت غیرفنی: contribute-form.md
+  - 📄 درباره ما: about.md
+  - 📝 ارجاع: citation.md
+  - 📨 پیشنهاد غیرفنی: contribute-form.md

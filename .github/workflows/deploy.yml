@@ -1,21 +1,26 @@
 name: Deploy
+
 on:
   push:
     branches: [main, master]
   workflow_dispatch:
+
 permissions:
   contents: write
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: false
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,8 +35,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
+
+      - name: Install Pagefind locally
+        run: npm install pagefind
 
       - name: Generate Markdown pages
         run: python scripts/build_pages.py
@@ -45,11 +53,16 @@ jobs:
         run: mike deploy --update-aliases v1 latest --deploy-prefix .
 
       - name: Copy PWA manifest
-        run: cp -r docs/manifest.webmanifest site/ 2>/dev/null || true
+        run: |
+          if [ -f docs/manifest.webmanifest ]; then
+            cp docs/manifest.webmanifest site/
+            echo "✅ PWA manifest copied"
+          else
+            echo "⚠️ PWA manifest not found, skipping"
+          fi
 
       - name: Build Pagefind index
-        run: |
-          npx pagefind --site site --output-subdir pagefind
+        run: npx pagefind --site site --output-subdir pagefind
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

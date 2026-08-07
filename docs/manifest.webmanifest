@@ -2,13 +2,17 @@
   "name": "فرهنگ واژه‌های تخصصی مهندسی",
   "short_name": "EngDict",
   "description": "فرهنگ لغت آنلاین و چندزبانهٔ واژه‌های فنی و مهندسی",
-  "start_url": "/Eng-dict/",
+  "start_url": "/eng-terms-fa/",
   "display": "standalone",
   "background_color": "#009688",
   "theme_color": "#009688",
   "dir": "rtl",
   "lang": "fa",
   "icons": [
-    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
   ]
 }

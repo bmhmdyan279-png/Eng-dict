@@ -14,8 +14,6 @@ description: فهرست الفبایی تمام واژگان تخصصی مهند
 ### حرف آ
 
 - [آب بندی](abbndy.md)
-- [آب بندی](abbndy-1.md)
-- [آب بندی](abbndy-2.md)
 - [آب چین](abchyn.md)
 - [آجر سه قدی](ajrshghdy.md)
 - [آجر فارسی بُر](ajrfarsybr.md)
@@ -36,7 +34,6 @@ description: فهرست الفبایی تمام واژگان تخصصی مهند
 
 - [اسپر](aspr.md)
 - [اسکوپ](askvp.md)
-- [اسکوپ](askvp-1.md)
 - [اشپیل](ashpyl.md)
 - [افت](aft.md)
 - [الاستیسیته](alastysyth.md)
@@ -142,7 +139,6 @@ description: فهرست الفبایی تمام واژگان تخصصی مهند
 
 - [زمین زِد](zmynzd.md)
 - [زنجاب](znjab.md)
-- [زنجاب](znjab-1.md)
 - [زیره](zyrh.md)
 - [زیگزال](zygzal.md)
 - [زیگزاگ](zygzag.md)

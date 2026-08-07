@@ -62,852 +62,613 @@
   - force
   - moment
   slug: gashtavar
-
 - term_fa: رقمی
   term_en: Digital
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: تاوَن
   term_en: Oven
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: اندازه غربالی
   term_en: Mesh
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: واسنجیدن
   term_en: Calibration
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: آمادگاه
   term_en: Depot
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: جیک
   term_en: Jig / Jigging
   category: واژگان مصوب فرهنگستان
   definition: متراکم سازی نمونه با بلند کردن و کوبیدن متناوب پیمانه.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: آژند
   term_en: Cement
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: واپایش
   term_en: Control
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: تشریفات
   term_en: Protocol
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: دسته
   term_en: Batch
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: مخلوط ساز
   term_en: Batching
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: رواداری و تحمل
   term_en: Tolerance
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: بسامد
   term_en: Frequency
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: لرزاننده
   term_en: Vibrator
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: تالار
   term_en: Gallery
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: بطری چگالی
   term_en: Pycnometer
   category: واژگان مصوب فرهنگستان
   definition: برابر مصوب فرهنگستان زبان و ادب فارسی.
-  standards: ""
-  source: کتاب آزمایشات فناوری بتن
   featured_book: true
-
+  references:
+  - کتاب آزمایشات فناوری بتن
 - term_fa: آب بندی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: جلوگیری از نفوذ آب یا رطوبت
-  standards: ""
-  source: ""
-
-- term_fa: آب بندی
-  term_en: ""
-  category: اصطلاحات ساختمانی
-  definition: دوغاب ریزی بر سطح رجها
-  standards: ""
-  source: ""
-
-- term_fa: آب بندی
-  term_en: ""
-  category: اصطلاحات ساختمانی
-  definition: عایق نفوذ نا پذیر
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آب چین
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دوغاب ریزی آجرکاری‌ها با ملات ماسه و سیمان یا مانند آن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آجر چهارگوش
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجر مربع شکل
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آجر سه قدی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: 3/4 آجر قزاقی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آجر فارسی بُر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجر لب پخ
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آجر نبشی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجر که در نبش دیوار به کار می رود
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آجر نره
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجرهایی که طول یا عرض عمودی و افقی پهلوی یکدیگر قرار گیرند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آچار F
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: وسیله ای به شکل F برای خم کردن میلگرد (آرماتوربندی)
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آسفالت
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: شن و ماسه و قیر پخته شده
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آسفالت سوخته
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آسفالت بدون چسبندگی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آلوئک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: لب پر شدن آجر به وسیله آهک
-  standards: ""
-  source: ""
-
-- term_fa: آويز
-  term_en: ""
+  references: []
+- term_fa: آویز
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: در سقف تيرچه بلوك
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: آهن گُم
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آهن سقف که روی آنها با آجر پوشانده اند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: اسپر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: جرزهای طرفین یک تاقی یا قوس بالای در
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: الاستیسیته
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: کشسانی ، لَم
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: اسکوپ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: میخ سر کج
-  standards: ""
-  source: ""
-
-- term_fa: اسکوپ
-  term_en: ""
-  category: اصطلاحات ساختمانی
-  definition: میخ دو سر یا سه سر
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: اشپیل
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: میله ای که از شکاف عبور می کند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: افت
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: نشست
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: اکسپوزه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: فرم ، نمایش ، حالت
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: اورلپ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: پوشش
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: ایزولاسیون
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: عایق ، آب بندی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: ایزوله
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: عایق
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: بالشتک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجر یا قطعه بتنی که زیر سر تیر آهن با مصالح پوششی دیگر قرار می دهند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: بلوکاژ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: مراحل کف سازی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: بند آجر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قطعه آجری که فاصله دو آجر را در سقف پُر می کند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: بند کلوکی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قطعه آجری است به اندازه کلوک
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پاتاق
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: شروع تاق از روی پایه با دیوار
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پاره آجر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قطعات مختلف آجر یا آجرهای شکسته
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پاسنگ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: پاخوری پای در یا دیوار
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پاکار
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: محل شروع قوس
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پالانه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجر کاری که مانند فرش آجر بعد از ساختن سقف انجام می شود
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پخ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: گوشه از آجر را فارسی بُر کردن یا در زاویه دیوارها ماهیچه بکاربردن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پشت بغل
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: لچکی بالای قوس
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پشت بند
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قطعات که پشت تخته های قاب میخ می کنند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پکافته
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دیوار تیغه ای که به دیوار اصلی چسبیده است
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پلیت
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: ورق
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پمپ کردن
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: با فشار حرکت دادن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پوتر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: تیر بتنی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پوست ساپ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: سمباده
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پوسته
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: روکشی است که روی آجر کاری ها یا در جاهای مختلف ساختمان بکار می رود
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: پیستوله
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دستگاه پاشنده مواد
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تاج قوس
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: بالای قوس
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تاریک کردن
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آجر کاری سقف را به اتمام رساندن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تخته شدن
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: به انتها رساندن دیوار ، پایان دیوار چینی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تخماق
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: کوبه سنگین
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تراورس
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: تخته های قطور و عریض
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تماسه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: وسیله اجرای دیوار کله راسته
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تنش
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: تنیدن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تنگ افتادن
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: درگیر شدن ، مهار شدن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: توپی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: شی کروی پلاستیک
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: توری فنسی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
-  definition: کلاف بندی مشبک از مفتول های 2 و 3 میلیمتری نرم که در حصارکشی بین وادار پروفیل به کار می رود
-  standards: ""
-  source: ""
-
+  definition: کلاف بندی مشبک از مفتول های 2 و 3 میلیمتری نرم که در حصارکشی بین وادار
+    پروفیل به کار می رود
+  references: []
 - term_fa: تیر شاخص
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: تیر عمودی وسط خرپا
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تیزون
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: پرگیر ، زودگیر
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: تیغه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دیوارهای جدا کننده
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: جان پناه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دیوار جلوی بالکن یا دیوار اطراف بام
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: جان گچ گرفته شده
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: عدم خوردگی گچ
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: جرز
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دیوار یا پایه ضخیمی است که باربر باشد
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: جُوَک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: نوعی آجر کاری زیگزاگ
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: چارک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: 1/4 آجر چهار گوش و 1/2 آجر قزاقی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: چاه کور
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: مشخص نبودن محل چاه در سطح زیر بنا و حوالی پی ها
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: چاهک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: چاهی به ارتفاع 1.5 الی 2.5 متر
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: چرخ چاه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
-  definition: وسیله چوبی و یا فلزی که به چرخش درون خزانه در پایه چرخ چاه و یا بلبرینگ سبب جابجایی مصالح به درون چاه و یا خارج آن می شود
-  standards: ""
-  source: ""
-
+  definition: وسیله چوبی و یا فلزی که به چرخش درون خزانه در پایه چرخ چاه و یا بلبرینگ
+    سبب جابجایی مصالح به درون چاه و یا خارج آن می شود
+  references: []
 - term_fa: چهار دنگ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: 3/4 آجر چهار گوش
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: الحاق
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: وصل
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: خاک شوره
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: خاکهای نمکی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: خرپشته
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: سر پناه پله روی بام
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: خرک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
-  definition: برای نگه داشتن میلگردهای مش فوقانی فونداسیون که خود با میلگرد درست می شود
-  standards: ""
-  source: ""
-
+  definition: برای نگه داشتن میلگردهای مش فوقانی فونداسیون که خود با میلگرد درست می
+    شود
+  references: []
 - term_fa: خط کردن
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: نشان کردن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: خمش
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: ممان ، سینه کردن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: خیز
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: ارتفاع قوس
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: دج
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: زمین سخت
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: درپوش
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قسمتی از روی دیوار آجری با دیوارهای دیگر می سازند
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: دلیل گذاری
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: رج استاد ، رج اصولی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: دوپوش
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: گنبدی که با یک سقف اضافه پوشش شده باشد
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: دول
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: سطل بنایی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: دیوار حائل
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دیوار واسطه باربر
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: رایزر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: کانال عمودی
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: رج بنا
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: ردیف های آجر کاری
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: روکار
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: نمای ساختمان
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: رومی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قوس نیم دایره بالای درگاه
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: زمین زِد
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: زمین سخت که مقاومت و فشردگی دانه ترکیبی آن در حد کمتر از دج است
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: زنجاب
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: آبخور
-  standards: ""
-  source: ""
-
-- term_fa: زنجاب
-  term_en: ""
-  category: اصطلاحات ساختمانی
-  definition: سیراب کردن آجرها
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: زیره
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: دانه های خشن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: زیگزاگ
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: حرکت کنگره ای (چپ و راست)
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: زیگزال
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: میلگرد های خرپایی تیرچه
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سبدی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: میلگرد بافته شده برای بالا و پایین شناژ فونداسیون
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سپتیک تانک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: مخزن بزرگ فاضلاب (منابع و فضولات)
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سر سفت
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: نسبت به خط قائم جلوتر باشد
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سرگرداندن
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: سرو ته کردن
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سروا افتاده
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: نسبت به خط قائم عقب تر باشد
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سِله
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: پیش آمده
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سنجاقی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: میلگرد های برش گیر فونداسیون
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سنگ دانه
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: سنگ های ریز
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سیسپول تانک
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: مخزن بزرگ فاضلاب (مایع)
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سیلت
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: لای
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سیلر
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: رنگ ثابت کننده
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سیم آرماتور بندی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: سیم با قطر 1.5
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: سیمان سنگ شده
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: پودر سیمان فشرده
-  standards: ""
-  source: ""
-
+  references: []
 - term_fa: شاقولی
-  term_en: ""
+  term_en: ''
   category: اصطلاحات ساختمانی
   definition: قائم بودن
-  standards: ""
-  source: ""
+  references: []

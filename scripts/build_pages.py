@@ -89,6 +89,79 @@ def slugify_english(text: str) -> str:
 
     return result
 
+def slugify_fa(text: str) -> str:
+    """تولید slug برای واژگان فارسی با تبدیل فاصله‌ها به خط تیره"""
+    if not text:
+        return ""
+    text = normalize_persian(text)
+
+    # نگاشت فارسی به لاتین (با فاصله)
+    fa_to_en = {
+        "آ": "a",
+        "ا": "a",
+        "ب": "b",
+        "پ": "p",
+        "ت": "t",
+        "ث": "s",
+        "ج": "j",
+        "چ": "ch",
+        "ح": "h",
+        "خ": "kh",
+        "د": "d",
+        "ذ": "z",
+        "ر": "r",
+        "ز": "z",
+        "ژ": "zh",
+        "س": "s",
+        "ش": "sh",
+        "ص": "s",
+        "ض": "z",
+        "ط": "t",
+        "ظ": "z",
+        "ع": "a",
+        "غ": "gh",
+        "ف": "f",
+        "ق": "gh",
+        "ک": "k",
+        "گ": "g",
+        "ل": "l",
+        "م": "m",
+        "ن": "n",
+        "و": "v",
+        "ه": "h",
+        "ی": "y",
+        "ئ": "y",
+        "ة": "h",
+        "۰": "0",
+        "۱": "1",
+        "۲": "2",
+        "۳": "3",
+        "۴": "4",
+        "۵": "5",
+        "۶": "6",
+        "۷": "7",
+        "۸": "8",
+        "۹": "9",
+        " ": "-",  # ✅ فاصله به خط تیره
+    }
+
+    result = "".join(fa_to_en.get(c, "") for c in text)
+    result = re.sub(r"[^a-z0-9\-]", "", result.lower())
+    result = re.sub(r"-+", "-", result).strip("-")
+
+    if not result:
+        return "term-" + hashlib.md5(text.encode()).hexdigest()[:8]
+
+    return result
+
+def get_first_letter_normalized(text: str) -> str:
+    """گرفتن اولین حرف نرمال‌شده - برای مرتب‌سازی الفبایی"""
+    if not text:
+        return "#"
+    normalized = normalize_persian(text.strip())
+    if not normalized:
+        return "#"
+    return normalized[0]
 
 def main():
     data_file = Path("data/terms.yaml")
